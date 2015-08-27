@@ -1,5 +1,5 @@
 //The EJS package which we have defined in package.json file is allow us to render HTML pages
-/*
+
 var express = require('express');
 var app = express();
 
@@ -17,19 +17,9 @@ app.set('view engine', 'ejs');
 //This final line will tell Server that we are actually rendering HTML files through EJS.
 app.engine('html', require('ejs').renderFile);
 
+var port = Number(process.env.PORT || 3000);
 
-var server = app.listen(3000, function(){
+var server = app.listen(port, function(){
 	console.log("Server is running on port 3000");
 });
 
-*/
-
-var http = require('http');
-
-var server = http.createServer(function(req, res){
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.end('<h1>Hello</h1>')
-});
-
-var port = Number(process.env.PORT || 3000);
-server.listen(port);
