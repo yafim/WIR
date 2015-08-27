@@ -1,5 +1,5 @@
 //The EJS package which we have defined in package.json file is allow us to render HTML pages
-/*
+
 var express = require('express');
 var app = express();
 
@@ -22,12 +22,3 @@ var server = app.listen(3000, function(){
 	console.log("Server is running on port 3000");
 });
 
-*/
-
-var express = require('express');
-var app = express.createServer();
-app.use(express.static(__dirname + '/public'));
-
-app.listen(3000, function(){
-	console.log("Server is running on port 3000");
-});
