@@ -6,17 +6,12 @@ var db = require('mongoskin').db('localhost:27017/bills');
 
 router.get('/', function(req, res){
 	// load data from DB here
+	var bills = db.bills.find()
 	res.render('index', {
 		title: 'My locations',
-		items: billMarkers
+		items: bills
 	});
 });
-
-
-router.get('/map', function(req, res){
-	res.render('map');
-});
-
 
 // post method
 //TODO: get from data base 
