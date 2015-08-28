@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="style/main.css"  /> 
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css"  /> 
+
 	<title>WhereIsRachel</title>
 </head>
 
 <body>
+
+<div class="container">
 	<h1><%= title %></h1>
 
 	<ul>
@@ -20,24 +23,28 @@
 		<input type="submit">
 	</form>
 
+
     <div id="map">
 
-    <script>
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-  });
-}
+	    <script>
+			var map;
+			function initMap() {
+			  map = new google.maps.Map(document.getElementById('map'), {
+			    center: {lat: -34.397, lng: 150.644},
+			    zoom: 8
+			  });
+			}
 
-    </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs7C0NGcrkrDFvqrqH8_nzbwz1BrZIr4Y&callback=initMap">
-    </script>
+	    </script>
+	    <script async defer
+	      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs7C0NGcrkrDFvqrqH8_nzbwz1BrZIr4Y&callback=initMap">
+	    </script>
+
+
+	</div> 
 
 </div>
-
-
+		<script src="jquery/dist/jquery.js"></script>
+		<script src="bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>
