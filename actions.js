@@ -2,8 +2,7 @@ var express = require('express');
 
 var router = express.Router();
 
-// Fake DB
-var billMarkers = [];
+var db = require('mongoskin').db('localhost:27017/bills');
 
 router.get('/', function(req, res){
 	// load data from DB here
@@ -23,11 +22,7 @@ router.get('/map', function(req, res){
 //TODO: get from data base 
 router.post('/add', function(req, res){
 	var newItem = req.body.newItem;
-	billMarkers.push({
-		id: billMarkers.length + 1,
-		desc: newItem
-	});
-
+	db.bills.insert(newItem);
 	res.redirect('/');
 });
 
