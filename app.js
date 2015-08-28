@@ -16,7 +16,7 @@ app.use(bodyParser());
 
 
 // Define routes
-app.use(require('./todos'));
+app.use(require('./actions'));
 
 // Start the server
 var port = Number(process.env.PORT || 3000);
