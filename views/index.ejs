@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style/main.css"  /> 
+	<title>WhereIsRachel</title>
+</head>
+
+<body>
+	<h1><%= title %></h1>
+
+	<ul>
+		<% for (var i = 0; i < items.length; i++) { %>
+		<li><%= items[i].desc %> </li>
+		<% } %>
+	</ul>
+
+	<form action="/add" method="post">
+		<input type="text" name ="newItem">
+		<input type="submit">
+	</form>
+
+    <div id="map">
+
+    <script>
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+  });
+}
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs7C0NGcrkrDFvqrqH8_nzbwz1BrZIr4Y&callback=initMap">
+    </script>
+
+</div>
+
+
+</body>
+</html>
