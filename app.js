@@ -6,43 +6,19 @@ var bodyParser = require('body-parser');
 var app = express();
 
 
-//Configure app
+// Configure app
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// use middleware
-app.use(bodyParser());
+// Use middleware
 app.use(express.static(path.join(__dirname, 'bower_components'))); //use bootsrap
-
-var todoItems = [];
-
-//define routes
-app.get('/', function(req, res){
-	// load data from DB here
-	res.render('index', {
-		title: 'My locations',
-		items: todoItems
-	});
-});
+app.use(bodyParser());
 
 
-app.get('/map', function(req, res){
-	res.render('map');
-});
+// Define routes
+app.use(require('./actions'));
 
-
-// post method
-//TODO: get from data base 
-app.post('/add', function(req, res){
-	var newItem = req.body.newItem;
-	todoItems.push({
-		id: todoItems.length + 1,
-		desc: newItem
-	});
-
-	res.redirect('/');
-});
-
+// Start the server
 var port = Number(process.env.PORT || 3000);
 
 var server = app.listen(port, function(){
