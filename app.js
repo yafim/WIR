@@ -3,6 +3,7 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+
 var app = express();
 
 
@@ -10,10 +11,13 @@ var app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded()); // to support URL-encoded bodies
+
+
 // Use middleware
 app.use(express.static(path.join(__dirname, 'bower_components'))); //use bootsrap
 app.use(bodyParser());
-
 
 // Define routes
 app.use(require('./actions'));
