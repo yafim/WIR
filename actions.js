@@ -14,6 +14,8 @@ var billMarkers = [
 	"currentLocation" : {"lat" : 32.084508, "lng" : 34.8731652}}
 ];
 
+//var db = require('mongoskin').db('localhost:27017/bills');
+
 router.get('/', function(req, res){
 	// load data from DB here
 	res.render('index', {
@@ -26,7 +28,6 @@ router.get('/', function(req, res){
 // post method
 //TODO: get from data base 
 router.post('/add', function(req, res){
-
 	var newLocation = req.body.newLocation;
 	var lat = req.body.lat;
 	var lng = req.body.lng;
@@ -36,6 +37,8 @@ router.post('/add', function(req, res){
 		currentLocation: {"lat" : lat, "lng" : lng}
 	});
 
+	//var newItem = req.body.newItem;
+	//db.bills.insert(newItem);
 	res.redirect('/');
 });
 
