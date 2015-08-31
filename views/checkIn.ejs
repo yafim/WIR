@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css"  /> 
+
+	<title>WhereIsRachel</title>
+</head>
+
+<body>
+
+<div class="container">
+	<h1><%= title %></h1>
+	<!--
+	<ul>
+		<% for (var i = 0; i < items.length; i++) { %>
+		<li><%= "id:" +  items[i].id + " " + "Current Location:" +  items[i].currentLocation.lng + "," + items[i].currentLocation.lat  %> </li>
+		<% } %>
+	</ul>
+	-->
+
+	<form action="/add" method="post" name="myForm">
+		<input type="hidden" name="newLocation">
+		<input type="hidden" name="lat">
+		<input type="hidden" name="lng">
+		<input type="submit" value="Check-In" onclick="addMarker()" >
+	</form>
+
+    <div id="map">
+		<script async defer
+	      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs7C0NGcrkrDFvqrqH8_nzbwz1BrZIr4Y&callback=initMap">
+	    </script>
+
+	    <script>
+
+	    	//Directions
+	        var directionsDisplay;
+    		var directionsService = new google.maps.DirectionsService();
+
+    		// Map properties
+	   		var coords;
+	   		var map;
+	   		var options;
+	   		var marker;
+	   		var items = <%- JSON.stringify(items) %>;
+
+			function initMap(position) {
+
+
+
+				coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				options = {
+				    zoom: 11,
+				    center: coords,
+				    mapTypeControl: false,
+				    navigationControlOptions: {
+				    	style: google.maps.NavigationControlStyle.SMALL
+				    },
+				    mapTypeId: google.maps.MapTypeId.ROADMAP
+			  	};
+
+				map = new google.maps.Map(document.getElementById("map"), options);
+				
+
+				var flightPlanCoordinates = [];
+
+				for (var key in items){
+				  	var data = items[key];
+				  	
+				  	marker = new google.maps.Marker({
+				  		position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng),
+				  		map: map
+				  	});
+
+				  	// Add current location
+				  	flightPlanCoordinates.push(marker.position);
+
+				}
+
+					var flightPath = new google.maps.Polyline({
+				    path: flightPlanCoordinates,
+				    geodesic: true,
+				    strokeColor: '#FF0000',
+				    strokeOpacity: 1.5,
+				    strokeWeight: 2.5
+				  });
+
+				   flightPath.setMap(map);
+
+				document.forms["myForm"].elements["lat"].value = position.coords.latitude;
+				document.forms["myForm"].elements["lng"].value = position.coords.longitude;
+			}
+
+
+
+			// Adds a marker to the map.
+			function addMarker() {
+			  // Add the marker at the clicked location, and add the next-available label
+			  // from the array of alphabetical characters.
+			  marker = new google.maps.Marker({
+			  	title: id,
+			    position: coords,
+			    map: map
+			  });
+			
+			// Set the newLocation variable
+			document.forms["myForm"].elements["newLocation"].value = coords;
+			}
+
+			if (navigator.geolocation) {
+			  navigator.geolocation.getCurrentPosition(initMap);
+			} else {
+			  error('Geo Location is not supported');
+			}
+			google.maps.event.addDomListener(window, 'load', initMap);
+			
+
+	    </script>
+
+	</div>
+
+		<script src="jquery/dist/jquery.js"></script>
+		<script src="bootstrap/dist/js/bootstrap.js"></script>
+
+<!--
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '927002334009260',
+				xfbml      : true,
+				version    : 'v2.4'
+			});
+		};
+
+
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+</div>
+		<script src="jquery/dist/jquery.js"></script>
+		<script src="bootstrap/dist/js/bootstrap.js"></script>
+
+<div
+		class="fb-like"
+		data-share="true"
+		data-width="450"
+		data-show-faces="true">
+</div>
+
+<script>
+	// This is called with the results from from FB.getLoginStatus().
+	function statusChangeCallback(response) {
+		console.log('statusChangeCallback');
+		console.log(response);
+		// The response object is returned with a status field that lets the
+		// app know the current login status of the person.
+		// Full docs on the response object can be found in the documentation
+		// for FB.getLoginStatus().
+		if (response.status === 'connected') {
+			// Logged into your app and Facebook.
+			testAPI();
+		} else if (response.status === 'not_authorized') {
+			// The person is logged into Facebook, but not your app.
+			document.getElementById('status').innerHTML = 'Please log ' +
+					'into this app.';
+		} else {
+			// The person is not logged into Facebook, so we're not sure if
+			// they are logged into this app or not.
+			document.getElementById('status').innerHTML = 'Please log ' +
+					'into Facebook.';
+		}
+	}
+
+	// This function is called when someone finishes with the Login
+	// Button.  See the onlogin handler attached to it in the sample
+	// code below.
+	function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+	}
+
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '{your-app-id}',
+			cookie     : true,  // enable cookies to allow the server to access
+								// the session
+			xfbml      : true,  // parse social plugins on this page
+			version    : 'v2.2' // use version 2.2
+		});
+
+		// Now that we've initialized the JavaScript SDK, we call
+		// FB.getLoginStatus().  This function gets the state of the
+		// person visiting this page and can return one of three states to
+		// the callback you provide.  They can be:
+		//
+		// 1. Logged into your app ('connected')
+		// 2. Logged into Facebook, but not your app ('not_authorized')
+		// 3. Not logged into Facebook and can't tell if they are logged into
+		//    your app or not.
+		//
+		// These three cases are handled in the callback function.
+
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+
+	};
+
+	// Load the SDK asynchronously
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+	// Here we run a very simple test of the Graph API after login is
+	// successful.  See statusChangeCallback() for when this call is made.
+	function testAPI() {
+		console.log('Welcome!  Fetching your information.... ');
+		FB.api('/me', function(response) {
+			console.log('Successful login for: ' + response.name);
+			document.getElementById('status').innerHTML =
+					'Thanks for logging in, ' + response.name + '!';
+		});
+	}
+</script>
+-->
+
+<!--   Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+ -->
+<!--
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+-->
+
+
+</body>
+</html>

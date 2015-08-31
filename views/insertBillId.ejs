@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css"  /> 
+
+	<title>Insert Bill Id</title>
+</head>
+
+<body>
+
+<div class="container">
+	<h1>Plese Insert Bill Id</h1>
+
+		<ul>
+		<% for (var i = 0; i < bills.length; i++) { %>
+		<li><%= "Bill Id:" +  bills[i].billId + " " + "Markers:" +  bills[i].billMarkers  %> </li>
+		<% } %>
+	</ul>
+
+
+	<form action="/billId" method="post">
+		<input type="text" name="billId">
+		<input type="submit" value="Submit">
+	</form>
+
+	</div>
+
+		<script src="jquery/dist/jquery.js"></script>
+		<script src="bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
