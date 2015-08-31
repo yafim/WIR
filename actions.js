@@ -4,14 +4,20 @@ var router = express.Router();
 
 // Fake DB
 var billMarkers = [
-	{"id" : "1",
-	"currentLocation" : {"lat" : 32.3137373, "lng" : 34.8803108}},
+	{
+		"id" : "1",
+		"currentLocation" : {"lat" : 32.3137373, "lng" : 34.8803108}
+	},
 
-	{"id" : "2",
-	"currentLocation" : {"lat" : 32.069221, "lng" : 34.7734675}},
+	{
+		"id" : "2",
+		"currentLocation" : {"lat" : 32.069221, "lng" : 34.7734675}
+	},
 
-	{"id" : "3",
-	"currentLocation" : {"lat" : 32.084508, "lng" : 34.8731652}}
+	{
+		"id" : "3",
+		"currentLocation" : {"lat" : 32.084508, "lng" : 34.8731652}
+	}
 ];
 
 //var db = require('mongoskin').db('localhost:27017/bills');
