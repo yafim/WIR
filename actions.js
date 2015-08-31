@@ -31,7 +31,12 @@ bills.push({
 
 router.get('/', function(req, res){
 	// load data from DB here
-	res.render('index', {
+	res.render('index')
+});
+
+router.get('/checkIn', function(req, res){
+	// load data from DB here
+	res.render('checkIn', {
 		title: 'My locations',
 		items: billMarkers
 	});
@@ -66,12 +71,16 @@ router.post('/add', function(req, res){
 	res.redirect('/');
 });
 
+//TODO: 
+// 1. Search for bill Id (exists or not)
+// 2. redirect to checkIn with current billId 
+
 router.post('/billId', function(req, res){
 	var billId = req.body.billId;
 	bills.push({
 		billId: billId
 	});
-	res.redirect('/');
+	res.redirect('/checkIn');
 });
 
 // Use as module

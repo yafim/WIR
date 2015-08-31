@@ -24,11 +24,19 @@
 		<input type="hidden" name="lat">
 		<input type="hidden" name="lng">
 		<input type="submit" value="Check-In" onclick="addMarker()" >
+		<input type ="button" value="HomePage" onclick='goToHomePage()'>
 	</form>
 
     <div id="map">
 		<script async defer
 	      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs7C0NGcrkrDFvqrqH8_nzbwz1BrZIr4Y&callback=initMap">
+	    </script>
+
+	    <!-- Redirect to home page -->
+	    <script>
+		function goToHomePage(){
+		    window.location = '/';   
+		}
 	    </script>
 
 	    <script>
