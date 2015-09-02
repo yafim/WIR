@@ -1,8 +1,12 @@
 var express = require('express');
+var utils = require('./utils.js');
 
 var router = express.Router();
 
 /* CREATE FAKE DB */
+var currentBillId = [];
+var indexToPass;
+
 var bills = [];
 
 // Each bill 
@@ -35,10 +39,13 @@ router.get('/', function(req, res){
 });
 
 router.get('/checkIn', function(req, res){
+	// var billId = req.query.currentBillId;
+	//billToShow = billMarkers;
+
 	// load data from DB here
 	res.render('checkIn', {
 		title: 'My locations',
-		items: billMarkers
+		items: bills[indexToPass] // search for billMarker by current billId.
 	});
 });
 
@@ -50,7 +57,7 @@ router.get('/about', function(req, res){
 router.get('/insertBillId', function(req, res){
 	// load data from DB here
 	res.render('insertBillId',{
-		bills : bills
+		items : bills
 	});
 });
 
@@ -66,9 +73,9 @@ router.post('/add', function(req, res){
 		currentLocation: {"lat" : lat, "lng" : lng}
 	});
 
-	//var newItem = req.body.newItem;
+	var newItem = req.body.newItem;
 	//db.bills.insert(newItem);
-	res.redirect('/');
+	res.redirect('/checkIn');
 });
 
 //TODO: 
@@ -77,11 +84,37 @@ router.post('/add', function(req, res){
 
 router.post('/billId', function(req, res){
 	var billId = req.body.billId;
+
+	var isExists = utils.SearchIdInArray(billId, bills);
+
+	if (isExists == -1){
+
+	var newBillMarkers = [
+		{
+			"currentLocation" : {"lat" : null, "lng" : null}
+		}
+	];
+
 	bills.push({
-		billId: billId
+		billId: billId,
+		billMarkers : newBillMarkers
 	});
+		indexToPass = bills.length - 1;
+	}
+	else {
+		// currentBillId = bills[isExists];
+		// indexToPass = isExists;
+		// currentBillId = bills[isExists].concat;
+		indexToPass = isExists;
+	}
+
 	res.redirect('/checkIn');
+	 // res.redirect('/checkIn?billId=' + currentBillId);
+	//res.redirect('/isExists=' + isExists);
+
 });
+
 
 // Use as module
 module.exports = router;
+
