@@ -2,6 +2,7 @@ var express = require('express');
 var utils = require('./utils.js');
 
 var router = express.Router();
+var isExists;
 
 /* CREATE FAKE DB */
 var currentBillId = [];
@@ -24,10 +25,13 @@ var billMarkers = [
 	}
 ];
 
-bills.push({
-	billId: '123',
-	billMarkers : billMarkers
-});
+var arr = {
+    billId: "123",
+    billMarkers: billMarkers 
+    
+}
+
+bills.push(arr);
 
 /* END OF DB*/
 
@@ -45,7 +49,9 @@ router.get('/checkIn', function(req, res){
 	// load data from DB here
 	res.render('checkIn', {
 		title: 'My locations',
-		items: bills[indexToPass] // search for billMarker by current billId.
+		items: bills[indexToPass].billMarkers, // search for billMarker by current billId.
+		bills: bills,
+		index: indexToPass
 	});
 });
 
@@ -65,15 +71,16 @@ router.get('/insertBillId', function(req, res){
 // post method
 //TODO: get from data base 
 router.post('/add', function(req, res){
-	var newLocation = req.body.newLocation;
+	// var newLocation = req.body.newLocation;
+	// var billMarkers1 = req.body.billMarkers;
+	// var billId = req.body.billId;
+
 	var lat = req.body.lat;
 	var lng = req.body.lng;
 
-	billMarkers.push({
-		currentLocation: {"lat" : lat, "lng" : lng}
-	});
+	InsertElement(lat, lng);
 
-	var newItem = req.body.newItem;
+	// var newItem = req.body.newItem;
 	//db.bills.insert(newItem);
 	res.redirect('/checkIn');
 });
@@ -85,35 +92,36 @@ router.post('/add', function(req, res){
 router.post('/billId', function(req, res){
 	var billId = req.body.billId;
 
-	var isExists = utils.SearchIdInArray(billId, bills);
+	isExists = utils.SearchIdInArray(billId, bills);
 
 	if (isExists == -1){
-
-	var newBillMarkers = [
-		{
-			"currentLocation" : {"lat" : null, "lng" : null}
-		}
-	];
+	var billMarkers = [];
 
 	bills.push({
 		billId: billId,
-		billMarkers : newBillMarkers
+		billMarkers : billMarkers
 	});
 		indexToPass = bills.length - 1;
 	}
 	else {
-		// currentBillId = bills[isExists];
-		// indexToPass = isExists;
-		// currentBillId = bills[isExists].concat;
 		indexToPass = isExists;
 	}
 
 	res.redirect('/checkIn');
-	 // res.redirect('/checkIn?billId=' + currentBillId);
-	//res.redirect('/isExists=' + isExists);
 
 });
 
+function InsertElement(lat, lng){
+	var billMarkers = [
+	{
+		"currentLocation" : {"lat" : lat, "lng" : lng }
+	}
+	];
+
+	bills[indexToPass].billMarkers.push({
+		currentLocation : { lat: lat, lng: lng }
+	});
+}
 
 // Use as module
 module.exports = router;
