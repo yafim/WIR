@@ -15,6 +15,7 @@
 
 	<h1><%= title %></h1>
 
+<!-- Print all DB - Test Only-->
 	<ul>
 			<li><%= "Bill Id:" +  bills[index].billId + " Markers: " %>
 			<% for (var j = 0; j < bills[index].billMarkers.length; j++) { %> 
@@ -24,6 +25,9 @@
 
 	</ul>
 
+<!-- END -->
+
+<!-- Send data to the server-->
 	<form action="/add" method="post" name="myForm">
 
 		<input type="hidden" name="lat">
@@ -57,7 +61,7 @@
 	   		var map;
 	   		var options;
 	   		var marker;
-	   		var items = <%- JSON.stringify(items) %>;
+	   		var items = <%- JSON.stringify(bills[index].billMarkers) %>;
 	   		var billId = <%- JSON.stringify(bills[index].billId) %>;
 
 			function initMap(position) {
@@ -100,6 +104,8 @@
 
 				   flightPath.setMap(map);
 
+
+				   // Variables to post
 				document.forms["myForm"].elements["lat"].value = position.coords.latitude;
 				document.forms["myForm"].elements["lng"].value = position.coords.longitude;
 				document.forms["myForm"].elements["billId"].value = billId;
@@ -114,10 +120,6 @@
 			    position: coords,
 			    map: map
 			  });
-			
-			// Set the newLocation variable
-			// document.forms["myForm"].elements["newLocation"].value = coords;
-
 			}
 
 			if (navigator.geolocation) {

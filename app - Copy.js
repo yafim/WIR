@@ -16,8 +16,6 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded()); // to support URL-encoded bodies
 
 
-
-
 // Use middleware
 app.use(express.static(path.join(__dirname, 'bower_components'))); //use bootsrap
 app.use(bodyParser());

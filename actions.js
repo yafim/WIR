@@ -37,19 +37,17 @@ bills.push(arr);
 
 //var db = require('mongoskin').db('localhost:27017/bills');
 
+// The main page
 router.get('/', function(req, res){
 	// load data from DB here
 	res.render('index')
 });
 
+// Check In page
 router.get('/checkIn', function(req, res){
-	// var billId = req.query.currentBillId;
-	//billToShow = billMarkers;
-
 	// load data from DB here
 	res.render('checkIn', {
 		title: 'My locations',
-		items: bills[indexToPass].billMarkers, // search for billMarker by current billId.
 		bills: bills,
 		index: indexToPass
 	});
@@ -71,46 +69,39 @@ router.get('/insertBillId', function(req, res){
 // post method
 //TODO: get from data base 
 router.post('/add', function(req, res){
-	// var newLocation = req.body.newLocation;
-	// var billMarkers1 = req.body.billMarkers;
-	// var billId = req.body.billId;
-
 	var lat = req.body.lat;
 	var lng = req.body.lng;
 
 	InsertElement(lat, lng);
 
-	// var newItem = req.body.newItem;
-	//db.bills.insert(newItem);
 	res.redirect('/checkIn');
 });
 
-//TODO: 
+
 // 1. Search for bill Id (exists or not)
 // 2. redirect to checkIn with current billId 
-
+// 3. indexToPass - current bill index
 router.post('/billId', function(req, res){
 	var billId = req.body.billId;
 
 	isExists = utils.SearchIdInArray(billId, bills);
 
+	// If no exists, Insert new billId to DB. Otherwise indexToPass = isExists
 	if (isExists == -1){
-	var billMarkers = [];
-
-	bills.push({
-		billId: billId,
-		billMarkers : billMarkers
-	});
-		indexToPass = bills.length - 1;
-	}
-	else {
+		var billMarkers = [];
+		bills.push({
+			billId: billId,
+			billMarkers : billMarkers
+		});
+			indexToPass = bills.length - 1;
+	} else {
 		indexToPass = isExists;
 	}
 
 	res.redirect('/checkIn');
-
 });
 
+// Insert an element to array
 function InsertElement(lat, lng){
 	var billMarkers = [
 	{
