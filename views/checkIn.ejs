@@ -23,7 +23,6 @@
 				<%="(" + bills[index].billMarkers[j].currentLocation.lat +"," + bills[index].billMarkers[j].currentLocation.lng + ")" %>
 			<% } %>
 			</li> 
-
 	</ul>
 
 <!-- END -->
@@ -33,8 +32,8 @@
 
 		<input type="hidden" name="lat">
 		<input type="hidden" name="lng">
-
 		<input type="hidden" name="billId">
+
 		<input type="submit" value="Check-In" onclick="addMarker()" >
 		<input type ="button" value="HomePage" onclick='goToHomePage()'>
 	</form>
@@ -50,66 +49,7 @@
 		    window.location = '/';   
 		}
 	    </script>
-<script>
 
-//    		// Map properties
-// 	   		var coords;
-// 	   		var map;
-// 	   		var options;
-// 	   		var marker;
-// 	   		var items = <%- JSON.stringify(bills[index].billMarkers) %>;
-// 	   		var billId = <%- JSON.stringify(bills[index].billId) %>;
-
-
-// function initMap() {
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//     center: coords,
-//     zoom: 11,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP
-//   });
-
-//   			// Adds a marker to the map.
-// 			function addMarker() {
-// 			  // Add the marker at the clicked location, and add the next-available label
-// 			  // from the array of alphabetical characters.
-// 			  marker = new google.maps.Marker({
-// 			  	title: id,
-// 			    position: coords,
-// 			    map: map
-// 			  });
-// 			}
-
-//   // var infoWindow = new google.maps.InfoWindow({map: map});
-
-//   // Try HTML5 geolocation.
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       coords = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude
-//       };
-
-//       // infoWindow.setPosition(coords);
-//       // infoWindow.setContent('Location found.');
-
-//       map.setCenter(coords);
-//     }, function() {
-//       handleLocationError(true, infoWindow, map.getCenter());
-//     });
-//   } else {
-//     // Browser doesn't support Geolocation
-//     handleLocationError(false, infoWindow, map.getCenter());
-//   }
-// }
-
-// function handleLocationError(browserHasGeolocation, infoWindow, coords) {
-//   infoWindow.setPosition(coords);
-//   // addMarker();
-//   infoWindow.setContent(browserHasGeolocation ?
-//                         'Error: The Geolocation service failed.' :
-//                         'Error: Your browser doesn\'t support geolocation.');
-// }
-</script>
 	    <script>
     		// Map properties
 	   		var coords;
