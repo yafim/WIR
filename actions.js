@@ -49,6 +49,12 @@ router.get('/', function(req, res){
 	res.render('index')
 });
 
+// about page
+// router.get('/about', function(req, res){
+// 	res.render('about')
+// });
+
+
 // Check In page
 router.get('/checkIn', function(req, res){
 	// load data from DB here
@@ -59,10 +65,7 @@ router.get('/checkIn', function(req, res){
 	});
 });
 
-// about page
-router.get('/about', function(req, res){
-	res.render('about')
-});
+
 
 router.get('/insertBillId', function(req, res){
 	// load data from DB here
