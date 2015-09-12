@@ -6,7 +6,7 @@ var isExists;
 
 /* CREATE FAKE DB */
 var currentBillId = [];
-var indexToPass;
+var indexToPass = 0;
 
 var bills = [];
 
@@ -35,6 +35,12 @@ bills.push(arr);
 
 /* END OF DB*/
 
+
+var mongo = require('mongodb');
+var Server = mongo.Server;
+var Db = mongo.Db;
+var server = new Server('ds035563.mongolab.com', 35563, {auto_reconnect: true});
+var db = new Db('rachel', server);
 //var db = require('mongoskin').db('localhost:27017/bills');
 
 // The main page
@@ -98,7 +104,7 @@ router.post('/billId', function(req, res){
 		indexToPass = isExists;
 	}
 
-	res.redirect('/checkIn');
+	res.redirect('/map');
 });
 
 // Insert an element to array
@@ -113,6 +119,20 @@ function InsertElement(lat, lng){
 		currentLocation : { lat: lat, lng: lng }
 	});
 }
+
+router.get('/map/data', function(req, res){
+	var data = {
+		bills: bills,
+		indexToPass: indexToPass
+	};
+	res.json(data);
+});
+
+router.get('/map', function(req, res){
+	// load data from DB here
+	res.render('map');
+});
+
 
 // Use as module
 module.exports = router;
