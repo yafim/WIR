@@ -12,7 +12,8 @@ app.engine('html', require('ejs').renderFile);
 
 app.set('view engine', '.html');
 
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'bower_components/views'));
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded()); // to support URL-encoded bodies

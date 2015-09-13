@@ -83,7 +83,7 @@ router.post('/add', function(req, res){
 
 	InsertElement(lat, lng);
 
-	res.redirect('/checkIn');
+	res.redirect('/map');
 });
 
 
@@ -107,7 +107,7 @@ router.post('/billId', function(req, res){
 		indexToPass = isExists;
 	}
 
-	res.redirect('/map');
+	res.redirect('/#/map');
 });
 
 // Insert an element to array
@@ -133,7 +133,7 @@ router.get('/map/data', function(req, res){
 
 router.get('/map', function(req, res){
 	// load data from DB here
-	res.render('map');
+	res.render('partials/map');
 });
 
 
