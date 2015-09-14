@@ -1,4 +1,4 @@
-	<!-- Page Content -->
+  <!-- Page Content -->
 
     <div class="container">
 
@@ -17,40 +17,41 @@
     <div class="row">
 
         <div class="col-sm-8">
-    		<h1>Plese Insert Bill Id</h1>
+        <h1>Plese Insert Bill Id</h1>
 
-	        <ul>
-        		<li ng-repeat="bill in bills">{{bill.billId}} : {{bill.billMarkers}}</li>
-    		</ul>
+          <ul>
+            <li ng-repeat="bill in bills">{{bill.billId}} : {{bill.billMarkers}}</li>
+        </ul>
 
-			<!-- Submit button -->
-			<form action="/billId" method="post">
-				<input type="text" name="billId">
-				<input type="submit" value="Submit">
-			</form>
+      <!-- Submit button -->
+      <form ng-submit="submit()">
+        Enter text and hit enter:
+        <input type="text" ng-model="text" name="text" />
+        <input type="submit" id="submit" value="Submit" />
+      </form>
 
-			</div>
+      </div>
         </div>
     </div>
     <!-- /.row -->
 
 
                <div class="row">
-				<div class="page-title">
-					</div>
-					<button class="btn btn-success" ng-click="refreshMap()">Refresh Map</button>
-					<button class="btn btn-success" ng-click="getMapInstance()">Show all Markers</button>
-					<button class="btn btn-success" ng-click="genGeoMarker()">Current Location</button>
-					<button class="btn btn-success" ng-click="genPolyRoute()">Gen Route</button>
-					<button class="btn btn-danger" ng-click="sendDataToServer()">Post</button>
+        <div class="page-title">
+          </div>
+          <button class="btn btn-success" ng-click="refreshMap()">Refresh Map</button>
+          <button class="btn btn-success" ng-click="getMapInstance()">Show all Markers</button>
+          <button class="btn btn-success" ng-click="genGeoMarker()">Current Location</button>
+          <button class="btn btn-success" ng-click="genPolyRoute()">Gen Route</button>
+          <button class="btn btn-danger" ng-click="sendDataToServer()">Post</button>
 
-				</div>
+        </div>
 
 
            <div class="row">
 
-			<div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
+      <div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
 
-			</div>
+      </div>
 
 </div><!-- /.container

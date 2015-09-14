@@ -16,7 +16,6 @@ var app = angular.module('pageHolder', [
  * Configure the Routes
  */
 app.config(['$routeProvider', function ($routeProvider) {
-  // $route.templateUrl = '/views/'; //+ $routeParams.name;
   var path = "views/partials/";
 
   $routeProvider
@@ -66,10 +65,15 @@ app.controller('PageCtrl', function ($scope, $location, $http) {
 app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window) {
 
       // Get data from the server
-        $http.get('/map/data').success(function(data) {
+        $http.get('/map/data')
+        .success(function(data) {
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
       });
+
+
+        
+
 
 
 
@@ -106,6 +110,11 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
+
+            showAllMarkers();
+
+
+
         }
 
         $scope.showError = function (error) {
@@ -129,6 +138,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.getLocation = function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
+
             }
             else {
                 $scope.error = "Geolocation is not supported by this browser.";
@@ -137,10 +147,15 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
         $scope.getLocation();
 
+
+
   /* LOGIC */
   var showAllMarkers = function(scope){
   var marker;
   var index = $scope.index;
+  
+  // alert(index);
+
     $scope.bills[index].billMarkers.push();
 
       for (var key in $scope.bills[index].billMarkers){
@@ -149,7 +164,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         
           marker = new google.maps.Marker({
             map: $scope.model.map,
-            position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng)
+            position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng) // change
           });
 
           // Add current location
@@ -190,8 +205,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         'lng': $scope.lng
       })
        .success(function(res){
-           alert('Data sent');
-          $window.location.reload();
+           // alert('Data sent');
+          // $window.location.reload();
        })
        .error(function(err){
           alert("Error: " + err);
@@ -236,6 +251,32 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     alert("clackMarker: " + model);
     $log.log("from clackMarker");
     $log.log(model);
+  };
+
+    $scope.list = [];
+    $scope.text;
+  $scope.submit = function() {
+
+    // temp solution...
+      $http.post('/billId',{
+        'billId':$scope.text
+      })
+       .success(function(res){
+
+            genGeoMarker($scope);
+            sendDataToServer($scope, $http, $window);
+
+            
+            $route.reload();
+
+       })
+       .error(function(err){
+          alert("Error: " + err);
+       });
+
+
+          $scope.text = '';
+
   };
 
 });

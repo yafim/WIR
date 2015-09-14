@@ -111,6 +111,11 @@ router.post('/billId', function(req, res){
 
 });
 
+router.get('/test/data', function(req, res){
+	
+});
+
+
 // Insert an element to array
 function InsertElement(lat, lng){
 	var billMarkers = [
