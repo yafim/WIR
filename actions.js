@@ -107,7 +107,8 @@ router.post('/billId', function(req, res){
 		indexToPass = isExists;
 	}
 
-	res.redirect('/#/map');
+	res.redirect('/#/insertBillId');
+
 });
 
 // Insert an element to array
