@@ -8,9 +8,17 @@
  */
 var app = angular.module('pageHolder', [
   'ngRoute',
-  'ui.map' 
-  // 'ui.event'
+  'ui.map',
+    'facebookUtils'
+
+    // 'ui.event'
 ]);
+
+app.constant('facebookConfigSettings', {
+    'appID' : '927002334009260',
+    'routingEnabled' : true
+
+});
 
 /**
  * Configure the Routes
@@ -20,16 +28,21 @@ app.config(['$routeProvider', function ($routeProvider) {
   var path = "views/partials/";
 
   $routeProvider
+
     // Home
     .when("/", {templateUrl: path + "home.html", controller: "PageCtrl"})
+
+      //private
+      .when("/profile", {templateUrl: path + "profile.html", controller: "PageCtrl",  needAuth: true})
+
     // Pages
     .when("/about", {templateUrl: path + "about.html", controller: "PageCtrl"})
     .when("/faq", {templateUrl: path + "faq.html", controller: "PageCtrl"})
     .when("/pricing", {templateUrl: path + "pricing.html", controller: "PageCtrl"})
     .when("/services", {templateUrl: path + "services.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
-    .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
-    .when("/insertBillId", {templateUrl: path + "insertBillId.html", controller: "MapController"})
+    .when("/map", {templateUrl: path + "map.html", controller: "MapController", needAuth: true})
+    .when("/insertBillId", {templateUrl: path + "about123.html", controller: "MapController"})
     // Blog
     // .when("/blog", {templateUrl: "partials/blog.html", controller: "BlogCtrl"})
     // .when("/blog/post", {templateUrl: "partials/blog_item.html", controller: "BlogCtrl"})
@@ -60,7 +73,7 @@ app.run(['$templateCache', function ($templateCache) {
   };
 });
 
-app.controller('PageCtrl', function ($scope, $location, $http) {
+app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
   // console.log("Page Controller reporting for duty.");
 
   // Activates the Carousel
@@ -72,7 +85,30 @@ app.controller('PageCtrl', function ($scope, $location, $http) {
   $('.tooltip-social').tooltip({
     selector: "a[data-toggle=tooltip]"
   })
+
+    $rootScope.user = null;
+
+    $rootScope.$on('fbLoginSuccess', function(name, response) {
+        if(response.status == 'connected'){
+         //   $location.url('/'); // I wish to redirect to home page after successful login.
+            $rootScope.loggedInUser = response;
+            $rootScope.user = user;
+
+        }
+    });
+
+    $rootScope.$on('fbLogoutSuccess', function() {
+        $scope.$apply(function() {
+            $rootScope.loggedInUser = {};
+            $location.url('/'); // I wish to redirect to home page after successful login.
+            //$rootScope.$broadcast('fbLogoutSuccess');
+        });
+    });
 });
+
+
+
+
 
 /* My Controller */
 app.controller('MapController', function ($scope, $timeout, $log, $http) {
