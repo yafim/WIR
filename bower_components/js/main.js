@@ -47,18 +47,6 @@ app.config(['$routeProvider', function ($routeProvider) {
 /**
  * Controls all other Pages
  */
-app.run(['$templateCache', function ($templateCache) {
-  $templateCache.put('control.tpl.html', '<button class="btn btn-sm btn-primary" ng-class="{\'btn-warning\': danger}" ng-click="controlClick()">{{controlText}}</button>');
-}]);
-
- app.controller('controlController', function ($scope) {
-  $scope.controlText = 'I\'m a custom control';
-  $scope.danger = false;
-  $scope.controlClick = function () {
-    $scope.danger = !$scope.danger;
-    alert('custom control clicked!')
-  };
-});
 
 app.controller('PageCtrl', function ($scope, $location, $http) {
   // console.log("Page Controller reporting for duty.");
@@ -75,7 +63,7 @@ app.controller('PageCtrl', function ($scope, $location, $http) {
 });
 
 /* My Controller */
-app.controller('MapController', function ($scope, $timeout, $log, $http) {
+app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window) {
 
       // Get data from the server
         $http.get('/map/data').success(function(data) {
@@ -83,13 +71,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http) {
         $scope.index = data.indexToPass;
       });
 
-          var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-  $scope.click = function() {
-    $scope.map.setCenter(chicago);
-  }
 
 
-        // Usful variables
+
+        // Useful variables
         $scope.lat = "0";
         $scope.lng = "0";
         $scope.error = "";
@@ -196,7 +181,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http) {
     $scope.flightPlanCoordinates.push($scope.currentMarker.position);
   }
 
-  var sendDataToServer = function (scope, http){
+  var sendDataToServer = function (scope, http, window){
     var currentBill = $scope.bills[$scope.index];
 
       $http.post('/add',{
@@ -206,14 +191,17 @@ app.controller('MapController', function ($scope, $timeout, $log, $http) {
       })
        .success(function(res){
            alert('Data sent');
+          $window.location.reload();
        })
        .error(function(err){
           alert("Error: " + err);
        });
+
+   
   };
 
   $scope.sendDataToServer = function (){
-    sendDataToServer($scope, $http);
+    sendDataToServer($scope, $http, $window);
   };
 
   $scope.genPolyRoute = function (){
