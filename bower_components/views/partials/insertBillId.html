@@ -5,12 +5,12 @@
     <div class="row">
 
         <div class="col-lg-12">
-            <h1 class="page-header">Map
-                <small>Follow the bill</small>
+            <h1 class="page-header">Bill
+                <small>Insert bill id</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/">Home</a></li>
-                <li class="active">Map</li>
+                <li class="active">Insert</li>
             </ol>
         </div>
 
@@ -18,26 +18,6 @@
 
         <div class="col-sm-8">
     		<h1>Plese Insert Bill Id</h1>
-
-			<!-- Print the coordinates -->
-<!-- 			<ul>
-				<% for (var i = 0; i < items.length; i++) { %>
-					<li><%= "Bill Id:" +  items[i].billId + " Markers: " %>
-					<% for (var j = 0; j < items[i].billMarkers.length; j++) { %> 
-						<%="(" + items[i].billMarkers[j].currentLocation.lat +"," + items[i].billMarkers[j].currentLocation.lng + ")" %>
-					<% } %>
-					</li> 
-				<% } %>
-			</ul> -->
-
-			<!-- Submit button -->
-<!-- 			<form action="/billId" method="post">
-				<input type="text" name="billId">
-				<input type="submit" value="Submit">
-			</form> -->
-
-	        <!-- <div ng-repeat="b in bills"></div> -->
-	        <!-- <div ng-model="lat" name="anim"></div> -->
 
 	        <ul>
         		<li ng-repeat="bill in bills">{{bill.billId}} : {{bill.billMarkers}}</li>
