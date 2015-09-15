@@ -82,7 +82,11 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
 
 /* My Controller */
 app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window) {
-
+// $('.test').load(function () {
+//   // run code
+//   alert('load');
+//   // showAllMarkers($scope);
+// });
       // Get data from the server
         $http.get('/map/data')
         .success(function(data) {
@@ -127,10 +131,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
-            showAllMarkers($scope);
+            // showAllMarkers($scope);
             // genPolyRoute();
 
-          // $scope.getMapInstance();
+            $scope.getMapInstance();
 
         }
 
@@ -167,26 +171,26 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
   /* LOGIC */
   var showAllMarkers = function(scope){
-  var marker;
-  // var index = $scope.index;
-  // alert("index: " + $scope.index);
-  // alert("bills: " + $scope.bills);
-  $scope.bills[$scope.index].billMarkers.push();
+    var marker;
+    // var index = $scope.index;
+    // alert("index: " + $scope.index);
+    // alert("bills: " + $scope.bills);
+    $scope.bills[$scope.index].billMarkers.push();
 
-  if ($scope.index){
-      for (var key in $scope.bills[$scope.index].billMarkers){
-              // alert('1');
-          var data = $scope.bills[$scope.index].billMarkers[key];
-        
-          marker = new google.maps.Marker({
-            map: $scope.model.map,
-            position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng) // change
-          });
+    if ($scope.index){
+        for (var key in $scope.bills[$scope.index].billMarkers){
+                // alert('1');
+            var data = $scope.bills[$scope.index].billMarkers[key];
+          
+            marker = new google.maps.Marker({
+              map: $scope.model.map,
+              position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng) // change
+            });
 
-          // Add current location - for the route...
-         $scope.flightPlanCoordinates.push(marker.position);
-}
-      }
+            // Add current location - for the route...
+           $scope.flightPlanCoordinates.push(marker.position);
+        }
+  }
   }
 
   var genGeoMarker = function(scope){
@@ -225,7 +229,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
           // $window.location.reload();
        })
        .error(function(err){
-          alert("Error: " + err);
+          alert("Error1: " + err);
        });
 
    
@@ -256,6 +260,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   };
 
   $scope.getMapInstance = function () {
+    // alert("getMapInstance");
     showAllMarkers($scope);
   };
 
@@ -269,6 +274,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $log.log(model);
   };
 
+
     $scope.list = [];
     $scope.text;
   $scope.submit = function() {
@@ -280,10 +286,14 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
        .success(function(res){
 
             genGeoMarker($scope);
-            sendDataToServer($scope, $http, $window);
-            showAllMarkers($scope);
+            genGeoMarker();
+            // sendDataToServer($scope, $http, $window);
+            // showAllMarkers($scope);
             // alert("Checked in!!");
-            $route.reload();
+            
+             $route.reload();
+
+            // $window.location.reload();
 
        })
        .error(function(err){
@@ -294,5 +304,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
           $scope.text = '';
 
   };
+
 
 });
