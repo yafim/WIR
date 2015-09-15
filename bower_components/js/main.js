@@ -146,14 +146,11 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var showAllMarkers = function(scope){
   var marker;
   var index = $scope.index;
-  
-  alert($scope.bills[index].billMarkers);
+    $scope.bills[$scope.index].billMarkers.push();
 
-    $scope.bills[index].billMarkers.push();
+      for (var key in $scope.bills[$scope.index].billMarkers){
 
-      for (var key in $scope.bills[index].billMarkers){
-
-          var data = $scope.bills[index].billMarkers[key];
+          var data = $scope.bills[$scope.index].billMarkers[key];
         
           marker = new google.maps.Marker({
             map: $scope.model.map,
