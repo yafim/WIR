@@ -69,6 +69,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         .success(function(data) {
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
+      })
+        .error(function(err){
+          alert("Error: " + err);
       });
 
         // Useful variables
@@ -148,7 +151,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var index = $scope.index;
   alert("index: " + $scope.index);
   alert("bills: " + $scope.bills);
-  // $scope.bills[$scope.index].billMarkers.push();
+  $scope.bills[$scope.index].billMarkers.push();
 
       for (var key in $scope.bills[$scope.index].billMarkers){
 
