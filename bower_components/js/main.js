@@ -8,9 +8,16 @@
  */
 var app = angular.module('pageHolder', [
   'ngRoute',
-  'ui.map' 
+  'ui.map',
+    'facebookUtils'
   // 'ui.event'
 ]);
+
+app.constant('facebookConfigSettings', {
+    'appID' : '927002334009260',
+    'routingEnabled' : true
+
+});
 
 /**
  * Configure the Routes
@@ -47,7 +54,7 @@ app.config(['$routeProvider', function ($routeProvider) {
  * Controls all other Pages
  */
 
-app.controller('PageCtrl', function ($scope, $location, $http) {
+app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
   // console.log("Page Controller reporting for duty.");
 
   // Activates the Carousel
@@ -59,6 +66,22 @@ app.controller('PageCtrl', function ($scope, $location, $http) {
   $('.tooltip-social').tooltip({
     selector: "a[data-toggle=tooltip]"
   })
+
+    $rootScope.$on('fbLoginSuccess', function(name, response) {
+        facebookUser.then(function(user) {
+            user.api('/me').then(function(response) {
+                $rootScope.loggedInUser = response;
+            });
+        });
+    });
+
+    $rootScope.$on('fbLogoutSuccess', function() {
+        $scope.$apply(function() {
+            $rootScope.loggedInUser = {};
+        });
+    });
+
+
 });
 
 /* My Controller */
@@ -103,7 +126,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
-            alert("1");
+         //   alert("1");
             showAllMarkers();
             $scope.genPolyRoute();
 
@@ -147,7 +170,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var marker;
   var index = $scope.index;
   
-  alert($scope.bills[index].billMarkers);
+ // alert($scope.bills[index].billMarkers);
 
     $scope.bills[index].billMarkers.push();
 
