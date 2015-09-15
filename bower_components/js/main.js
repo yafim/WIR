@@ -86,9 +86,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       // Get data from the server
         $http.get('/map/data')
         .success(function(data) {
-          // alert("data passed");
+          alert("data passed");
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
+        alert("index is : " + $scope.index);
       }) //TODO: error handle..
         .error(function(err){
           alert("Error: " + err);
@@ -175,7 +176,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
   if ($scope.index){
       for (var key in $scope.bills[$scope.index].billMarkers){
-              alert('1');
+              // alert('1');
           var data = $scope.bills[$scope.index].billMarkers[key];
         
           marker = new google.maps.Marker({
@@ -281,8 +282,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             genGeoMarker($scope);
             sendDataToServer($scope, $http, $window);
-            // showAllMarkers();
-            alert("Checked in!!");
+            showAllMarkers($scope);
+            // alert("Checked in!!");
             $route.reload();
 
        })
