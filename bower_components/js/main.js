@@ -104,8 +104,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.model.map.setCenter(latlng);
 
 
-            showAllMarkers();
-            genPolyRoute();
+            $scope.showAllMarkers();
+            $scope.genPolyRoute();
 
 
         }
