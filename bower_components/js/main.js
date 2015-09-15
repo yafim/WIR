@@ -281,7 +281,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             genGeoMarker($scope);
             sendDataToServer($scope, $http, $window);
-            showAllMarkers();
+
             alert("Checked in!!");
             $route.reload();
 
@@ -292,6 +292,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
 
           $scope.text = '';
+          showAllMarkers();
 
   };
 
