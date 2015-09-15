@@ -28,7 +28,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/services", {templateUrl: path + "services.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
-    .when("/insertBillId", {templateUrl: path + "insertBillId.html", controller: "MapController"})
+    .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController"})
     // Blog
     // .when("/blog", {templateUrl: "partials/blog.html", controller: "BlogCtrl"})
     // .when("/blog/post", {templateUrl: "partials/blog_item.html", controller: "BlogCtrl"})
@@ -70,7 +70,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
       });
-
 
         // Useful variables
         $scope.lat = "0";

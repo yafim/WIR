@@ -49,23 +49,6 @@ router.get('/', function(req, res){
 	res.render('index')
 });
 
-// about page
-// router.get('/about', function(req, res){
-// 	res.render('about')
-// });
-
-
-// Check In page
-router.get('/checkIn', function(req, res){
-	// load data from DB here
-	res.render('checkIn', {
-		title: 'My locations',
-		bills: bills,
-		index: indexToPass
-	});
-});
-
-
 
 router.get('/insertBillId', function(req, res){
 	// load data from DB here
@@ -75,8 +58,6 @@ router.get('/insertBillId', function(req, res){
 });
 
 
-// post method
-//TODO: get from data base 
 router.post('/add', function(req, res){
 	var lat = req.body.lat;
 	var lng = req.body.lng;
