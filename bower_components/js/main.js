@@ -72,12 +72,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       });
 
 
-        
-
-
-
-
-
         // Useful variables
         $scope.lat = "0";
         $scope.lng = "0";
@@ -112,7 +106,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
 
             showAllMarkers();
-
+            genPolyRoute();
 
 
         }
@@ -167,7 +161,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng) // change
           });
 
-          // Add current location
+          // Add current location - for the route...
          $scope.flightPlanCoordinates.push(marker.position);
 
       }
@@ -266,7 +260,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             genGeoMarker($scope);
             sendDataToServer($scope, $http, $window);
 
-            
+            alert("Checked in!!");
             $route.reload();
 
        })
