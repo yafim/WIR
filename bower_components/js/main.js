@@ -29,6 +29,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     // Home
     .when("/", {templateUrl: path + "home.html", controller: "PageCtrl"})
     // Pages
+      .when("/profile", {templateUrl: path + "profile.html", controller: "PageCtrl", needAuth: true})
     .when("/about", {templateUrl: path + "about.html", controller: "PageCtrl"})
     .when("/faq", {templateUrl: path + "faq.html", controller: "PageCtrl"})
     .when("/pricing", {templateUrl: path + "pricing.html", controller: "PageCtrl"})
@@ -63,17 +64,23 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
     selector: "a[data-toggle=tooltip]"
   })
 
+    $rootScope.user = null;
+
     $rootScope.$on('fbLoginSuccess', function(name, response) {
-        facebookUser.then(function(user) {
-            user.api('/me').then(function(response) {
+        if(response.status == 'connected'){
+            //   $location.url('/'); // I wish to redirect to home page after successful login.
+
                 $rootScope.loggedInUser = response;
-            });
-        });
+                $rootScope.user = user;
+
+        }
     });
 
     $rootScope.$on('fbLogoutSuccess', function() {
         $scope.$apply(function() {
             $rootScope.loggedInUser = {};
+            $location.url('/'); // I wish to redirect to home page after successful login.
+            //$rootScope.$broadcast('fbLogoutSuccess');
         });
     });
 
