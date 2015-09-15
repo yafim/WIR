@@ -146,7 +146,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var showAllMarkers = function(scope){
   var marker;
   var index = $scope.index;
-    $scope.bills[$scope.index].billMarkers.push();
+  
+  // $scope.bills[$scope.index].billMarkers.push();
 
       for (var key in $scope.bills[$scope.index].billMarkers){
 
