@@ -173,11 +173,11 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var index = $scope.index;
   // alert("index: " + $scope.index);
   // alert("bills: " + $scope.bills);
-  // $scope.bills[$scope.index].billMarkers.push();
-              alert('1');
+  $scope.bills[$scope.index].billMarkers.push();
+
   if ($scope.index){
       for (var key in $scope.bills[$scope.index].billMarkers){
-
+              alert('1');
           var data = $scope.bills[$scope.index].billMarkers[key];
         
           marker = new google.maps.Marker({
