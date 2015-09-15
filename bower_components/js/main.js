@@ -126,12 +126,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
-         //   alert("1");
-
-            // showAllMarkers();
+            showAllMarkers($scope);
             // genPolyRoute();
 
-          $scope.getMapInstance();
+          // $scope.getMapInstance();
 
         }
 
@@ -169,20 +167,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
   /* LOGIC */
   var showAllMarkers = function(scope){
-
-     $http.get('/map/data')
-        .success(function(data) {
-          // alert("data passed");
-        $scope.bills = data.bills;
-        $scope.index = data.indexToPass;
-      }) //TODO: error handle..
-        .error(function(err){
-          alert("Error: " + err);
-      });
-
-
   var marker;
-  var index = $scope.index;
+  // var index = $scope.index;
   // alert("index: " + $scope.index);
   // alert("bills: " + $scope.bills);
   $scope.bills[$scope.index].billMarkers.push();
