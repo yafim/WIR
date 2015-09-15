@@ -163,7 +163,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         }
 
         $scope.getLocation();
-
+        showAllMarkers($scope);
 
 
   /* LOGIC */
@@ -174,7 +174,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   // alert("bills: " + $scope.bills);
   $scope.bills[$scope.index].billMarkers.push();
 
-  // if ($scope.index){
+  if ($scope.index){
       for (var key in $scope.bills[$scope.index].billMarkers){
               // alert('1');
           var data = $scope.bills[$scope.index].billMarkers[key];
@@ -187,7 +187,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
           // Add current location - for the route...
          $scope.flightPlanCoordinates.push(marker.position);
 }
-      // }
+      }
   }
 
   var genGeoMarker = function(scope){
