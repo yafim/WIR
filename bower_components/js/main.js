@@ -96,6 +96,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
           // alert("data passed");
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
+        // alert("index is : " + $scope.index);
       }) //TODO: error handle..
         .error(function(err){
           alert("Error: " + err);
@@ -133,11 +134,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
-         //   alert("1");
-
-            showAllMarkers();
+            showAllMarkers($scope);
             // genPolyRoute();
 
+          // $scope.getMapInstance();
 
         }
 
@@ -172,17 +172,17 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.getLocation();
 
 
-
   /* LOGIC */
   var showAllMarkers = function(scope){
   var marker;
-  var index = $scope.index;
+  // var index = $scope.index;
   // alert("index: " + $scope.index);
   // alert("bills: " + $scope.bills);
-  // $scope.bills[$scope.index].billMarkers.push();
+  $scope.bills[$scope.index].billMarkers.push();
+
   if ($scope.index){
       for (var key in $scope.bills[$scope.index].billMarkers){
-
+              // alert('1');
           var data = $scope.bills[$scope.index].billMarkers[key];
         
           marker = new google.maps.Marker({
@@ -288,8 +288,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             genGeoMarker($scope);
             sendDataToServer($scope, $http, $window);
-
-            alert("Checked in!!");
+            showAllMarkers($scope);
+            // alert("Checked in!!");
             $route.reload();
 
        })
@@ -297,9 +297,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
           alert("Error: " + err);
        });
 
-
+    
           $scope.text = '';
-          showAllMarkers();
 
   };
 
