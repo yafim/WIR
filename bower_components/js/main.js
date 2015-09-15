@@ -138,10 +138,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
-            // showAllMarkers($scope);
+            showAllMarkers($scope);
             // genPolyRoute();
 
-            $scope.getMapInstance();
+            // $scope.getMapInstance();
 
         }
 
@@ -207,6 +207,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     });
 
     $scope.flightPlanCoordinates.push($scope.currentMarker.position);
+
   }
 
   var genPolyRoute = function(scope){
@@ -292,9 +293,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       })
        .success(function(res){
 
-            genGeoMarker($scope);
+            // genGeoMarker($scope);
             genGeoMarker();
-            // sendDataToServer($scope, $http, $window);
+            sendDataToServer($scope, $http, $window);
             // showAllMarkers($scope);
             // alert("Checked in!!");
             
