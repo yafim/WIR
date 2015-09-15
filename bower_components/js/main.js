@@ -147,7 +147,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var marker;
   var index = $scope.index;
   
-  // alert(index);
+  alert($scope.bills[index].billMarkers);
 
     $scope.bills[index].billMarkers.push();
 
