@@ -163,9 +163,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         }
 
         $scope.getLocation();
-        if ($scope.index){
-          $scope.showAllMarkers($scope);
-        }
 
 
   /* LOGIC */
