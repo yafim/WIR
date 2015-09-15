@@ -103,7 +103,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
-
+            aler("1");
             $scope.showAllMarkers();
             $scope.genPolyRoute();
 
