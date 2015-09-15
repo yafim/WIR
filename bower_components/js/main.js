@@ -130,7 +130,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             // showAllMarkers();
             // genPolyRoute();
-            alert('1');
+
           $scope.getMapInstance();
 
         }
@@ -174,6 +174,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   // alert("index: " + $scope.index);
   // alert("bills: " + $scope.bills);
   // $scope.bills[$scope.index].billMarkers.push();
+              alert('1');
   if ($scope.index){
       for (var key in $scope.bills[$scope.index].billMarkers){
 
