@@ -67,9 +67,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       // Get data from the server
         $http.get('/map/data')
         .success(function(data) {
+          // alert("data passed");
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
-      })
+      }) //TODO: error handle..
         .error(function(err){
           alert("Error: " + err);
       });
@@ -149,10 +150,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var showAllMarkers = function(scope){
   var marker;
   var index = $scope.index;
-  alert("index: " + $scope.index);
-  alert("bills: " + $scope.bills);
-  $scope.bills[$scope.index].billMarkers.push();
-
+  // alert("index: " + $scope.index);
+  // alert("bills: " + $scope.bills);
+  // $scope.bills[$scope.index].billMarkers.push();
+  if ($scope.index){
       for (var key in $scope.bills[$scope.index].billMarkers){
 
           var data = $scope.bills[$scope.index].billMarkers[key];
@@ -164,7 +165,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
           // Add current location - for the route...
          $scope.flightPlanCoordinates.push(marker.position);
-
+}
       }
   }
 
