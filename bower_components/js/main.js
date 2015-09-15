@@ -90,8 +90,12 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       // Get data from the server
         $http.get('/map/data')
         .success(function(data) {
+          // alert("data passed");
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
+      }) //TODO: error handle..
+        .error(function(err){
+          alert("Error: " + err);
       });
 
         // Useful variables
@@ -127,8 +131,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.model.map.setCenter(latlng);
 
          //   alert("1");
+
             showAllMarkers();
-            $scope.genPolyRoute();
+            // genPolyRoute();
 
 
         }
@@ -169,14 +174,13 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   var showAllMarkers = function(scope){
   var marker;
   var index = $scope.index;
-  
- // alert($scope.bills[index].billMarkers);
+  // alert("index: " + $scope.index);
+  // alert("bills: " + $scope.bills);
+  // $scope.bills[$scope.index].billMarkers.push();
+  if ($scope.index){
+      for (var key in $scope.bills[$scope.index].billMarkers){
 
-    $scope.bills[index].billMarkers.push();
-
-      for (var key in $scope.bills[index].billMarkers){
-
-          var data = $scope.bills[index].billMarkers[key];
+          var data = $scope.bills[$scope.index].billMarkers[key];
         
           marker = new google.maps.Marker({
             map: $scope.model.map,
@@ -185,7 +189,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
           // Add current location - for the route...
          $scope.flightPlanCoordinates.push(marker.position);
-
+}
       }
   }
 
