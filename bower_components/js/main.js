@@ -130,6 +130,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             // showAllMarkers();
             // genPolyRoute();
+            alert('1');
           $scope.getMapInstance();
 
         }
