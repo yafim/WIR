@@ -128,9 +128,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
          //   alert("1");
 
-            getMapInstance();
+            // showAllMarkers();
             // genPolyRoute();
-
+          $scope.getMapInstance();
 
         }
 
@@ -281,7 +281,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             genGeoMarker($scope);
             sendDataToServer($scope, $http, $window);
-
+            // showAllMarkers();
             alert("Checked in!!");
             $route.reload();
 
@@ -290,9 +290,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
           alert("Error: " + err);
        });
 
-
+    
           $scope.text = '';
-          showAllMarkers();
 
   };
 
