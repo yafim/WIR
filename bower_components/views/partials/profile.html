@@ -1,0 +1,34 @@
+<section class='marginTop' style="text-align: center" >
+    <div>
+        <!--<h1>Welcome {{loggedInUser['authResponse']['name']}}<h1>-->
+    <h2>Welcome dude</h2>
+    </div>
+
+    <div class="page-header" ng-show='loggedInUser'>
+        <img class="profile_circular" align="center" ng-src="http://graph.facebook.com/{{loggedInUser['authResponse']['userID']}}/picture?type=large">
+        {{$scope.user}}
+        {{loggedInUser.name}}
+    </div>
+
+    <div class='margin-left' ng-show='loggedInUser.name'>
+        <div>Hello, {{loggedInUser.name}}!</div>
+    </div>
+
+    <div class='margin-left' ng-hide='loggedInUser.name'>
+        <div>Hello, Stranger!</div>
+    </div>
+
+    <script>
+
+    </script>
+    <div class="page-header">
+        {{$scope.user}}
+
+    </div>
+     <pre>
+    Joined since: 11.9.2015
+    Number of bills: 5
+         json:
+    {{loggedInUser['authResponse']}}
+  </pre>
+</section>
