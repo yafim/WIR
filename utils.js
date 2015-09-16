@@ -1,13 +1,22 @@
 /* UTILS - Add helper functions */
 
 // Search for id
+// function SearchIdInArray(id, arr){
+// 	for (var key in arr){
+// 		if (arr[key].billId === id){
+// 			return key;
+// 		}
+// 	}
+// 	return -1;
+// }
 function SearchIdInArray(id, arr){
 	for (var key in arr){
-		if (arr[key].billId === id){
+		if (arr[key].billID === id){
 			return key;
 		}
 	}
 	return -1;
+
 }
 
 

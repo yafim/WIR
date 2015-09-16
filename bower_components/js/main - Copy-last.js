@@ -141,7 +141,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.model.map.setCenter(latlng);
 
             $scope.getDataFromServer();
-
+            $scope.getMapInstance();
             // genPolyRoute();
 
             // $scope.getMapInstance();
@@ -171,7 +171,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
 
-
             }
             else {
                 $scope.error = "Geolocation is not supported by this browser.";
@@ -179,7 +178,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         }
 
         $scope.getLocation();
-
 
 
 
@@ -193,7 +191,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
 
     // if ($scope.index){
-      // alert("show... here");
+      alert("show... here");
 
       places = $scope.fakeDB[$scope.index].places;
 
@@ -302,9 +300,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.fakeDB = data.fakeDB;
         $scope.index = data.indexToPass;
 
-        // Trick...
-        showAllMarkers($scope);
-
         // alert("index is : " + $scope.index);
       }) //TODO: error handle..
         .error(function(err){
@@ -343,6 +338,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
        });
 
     
+
   };
 
 //   function SearchIdInArray(id, arr){
