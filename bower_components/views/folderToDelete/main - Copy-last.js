@@ -37,14 +37,33 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
     .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController"})
-    .otherwise("/404", {templateUrl: path + "404.html", controller: "PageCtrl"});
+    .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);
+
+/**
+ * Controls the Blog
+ */
+// app.controller('BlogCtrl', function ( $scope, $location, $http ) {
+//   console.log("Blog Controller reporting for duty.");
+// });
 
 /**
  * Controls all other Pages
  */
 
 app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
+  // console.log("Page Controller reporting for duty.");
+
+        $http.get('/map/data')
+        .success(function(data) {
+          // alert("data passed");
+        $scope.fakeDB = data.fakeDB;
+        $scope.bills = data.bills;
+      }) //TODO: error handle..
+        .error(function(err){
+          alert("Error: " + err);
+      });
+      
 
   // Activates the Carousel
   $('.carousel').carousel({
@@ -122,7 +141,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.model.map.setCenter(latlng);
 
             $scope.getDataFromServer();
-
+            $scope.getMapInstance();
             // genPolyRoute();
 
             // $scope.getMapInstance();
@@ -152,7 +171,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
 
-
             }
             else {
                 $scope.error = "Geolocation is not supported by this browser.";
@@ -163,7 +181,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
 
 
-
   /* LOGIC */
   var showAllMarkers = function(scope){
 
@@ -171,6 +188,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     var marker;
     var places;
     var data;
+
+
+    // if ($scope.index){
+      alert("show... here");
 
       places = $scope.fakeDB[$scope.index].places;
 
@@ -183,6 +204,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         // Add current location - for the Poly route...
         $scope.flightPlanCoordinates.push(marker.position);
       }
+    // }  
   }
 
   var genGeoMarker = function(scope){
@@ -222,13 +244,17 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
            // alert('Data sent');
        })
        .error(function(err){
-          console.log("SendDataToServer Error: " + err);
+          log("SendDataToServer Error: " + err);
        });
   };
 
-  // $scope.genPolyRoute = function (){
-  //   genPolyRoute($scope);
+  // $scope.sendDataToServer = function (){
+  //   sendDataToServer($scope, $http, $window);
   // };
+
+  $scope.genPolyRoute = function (){
+    genPolyRoute($scope);
+  };
 
   // Clear all
   $scope.removeMarkers = function () {
@@ -246,12 +272,12 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     return;
   };
 
-  // $scope.getMapInstance = function () {
-  //   // alert("getMapInstance");
-  //   if ($scope.index){
-  //     showAllMarkers($scope);
-  //   }
-  // };
+  $scope.getMapInstance = function () {
+    // alert("getMapInstance");
+    if ($scope.index){
+      showAllMarkers($scope);
+    }
+  };
 
   $scope.genGeoMarker = function (numberOfMarkers) {
     genGeoMarker($scope);
@@ -267,16 +293,17 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       // Get data from the server
         $http.get('/map/data')
         .success(function(data) {
-          $scope.fakeDB = data.fakeDB;
-          $scope.index = data.indexToPass;
 
-          // Trick...
-          showAllMarkers($scope);
-          genPolyRoute($scope);
+          // alert("data passed");
+        // $scope.bills = data.bills;
+        
+        $scope.fakeDB = data.fakeDB;
+        $scope.index = data.indexToPass;
 
+        // alert("index is : " + $scope.index);
       }) //TODO: error handle..
         .error(function(err){
-          console.log("getDataFromServer - Error: " + err);
+          log("getDataFromServer - Error: " + err);
       });
   };
 
@@ -299,14 +326,30 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             $scope.sendDataToServer($scope, $http);
 
-            alert("Checked in!!");
+            // alert("Checked in!!");
             $route.reload();
+
+
+
+
        })
        .error(function(err){
           alert("ErrorSubmit: " + err);
        });
 
     
+
   };
+
+//   function SearchIdInArray(id, arr){
+//     var res = -1;
+//   for (var key in arr){
+//     if (arr[key].billID === id){
+//       res = key;
+//     }
+//   }
+
+//   alert(res);
+// }
 
 });

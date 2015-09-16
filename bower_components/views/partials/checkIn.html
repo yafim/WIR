@@ -19,9 +19,6 @@
         <div class="col-sm-8">
         <h1>Please Insert Bill Id</h1>
 
-<!--           <ul>
-            <li ng-repeat="bill in bills">{{bill.billId}} : {{bill.billMarkers}}</li>
-        </ul> -->
           <ul>
             <li ng-repeat="bill in fakeDB">{{bill.billID}} : {{bill.places}}</li>
         </ul>
@@ -37,24 +34,10 @@
         </div>
     </div>
     <!-- /.row -->
-
-
-               <div class="row">
-        <div class="page-title">
-          </div>
-          <button class="btn btn-success" ng-click="refreshMap()">Refresh Map</button>
-          <button class="btn btn-success" ng-click="getMapInstance()">Show all Markers</button>
-          <button class="btn btn-success" ng-click="genGeoMarker()">Current Location</button>
-          <button class="btn btn-success" ng-click="genPolyRoute()">Gen Route</button>
-          <button class="btn btn-danger" ng-click="sendDataToServer()">Post</button>
-
-        </div>
-
-
-           <div class="row">
+   <div class="row">
 
       <div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
 
-      </div>
+    </div>
 
 </div><!-- /.container
