@@ -37,28 +37,6 @@ app.config(['$routeProvider', function ($routeProvider) {
  */
 
 app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
-
-    $scope.isCollapsed = true;
-    $scope.$on('$routeChangeSuccess', function () {
-        $scope.isCollapsed = true;
-    });
-    
-    $scope.getClass = function (path) {
-    if(path === '/') {
-        if($location.path() === '/') {
-            return "active";
-        } else {
-            return "";
-        }
-    }
- 
-    if ($location.path().substr(0, path.length) === path) {
-        return "active";
-    } else {
-        return "";
-    }
-}
-
   // Activates the Carousel - image changer
   $('.carousel').carousel({
     interval: 5000
@@ -92,6 +70,39 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
 
 
 });
+
+/* Navigation bar controller */
+app.controller('NavCtrl', function ($scope, $location, $http, $rootScope) {
+
+    //nav bar toggle
+    $scope.isCollapsed = true;
+
+    //Search box toggle
+    $scope.custom = true;
+
+
+
+    $scope.$on('$routeChangeSuccess', function () {
+        $scope.isCollapsed = true;
+    });
+
+    $scope.getClass = function (path) {
+    if(path === '/') {
+        if($location.path() === '/') {
+            return "active";
+        } else {
+            return "";
+        }
+    }
+    if ($location.path().substr(0, path.length) === path) {
+        return "active";
+    } else {
+        return "";
+    }
+  }
+});
+
+
 
 /* My Controller */
 app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window) {
