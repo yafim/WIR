@@ -27,7 +27,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/pricing", {templateUrl: path + "pricing.html", controller: "PageCtrl"})
     .when("/services", {templateUrl: path + "services.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
-    .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
+    // .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
     .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController"})
     .otherwise("/404", {templateUrl: path + "404.html", controller: "PageCtrl"});
 }]);
@@ -73,14 +73,11 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
 
 /* Navigation bar controller */
 app.controller('NavCtrl', function ($scope, $location, $http, $rootScope) {
-
-    //nav bar toggle
-    $scope.isCollapsed = true;
-
     //Search box toggle
     $scope.custom = true;
 
-
+    //nav bar toggle
+    $scope.isCollapsed = true;
 
     $scope.$on('$routeChangeSuccess', function () {
         $scope.isCollapsed = true;
@@ -100,6 +97,18 @@ app.controller('NavCtrl', function ($scope, $location, $http, $rootScope) {
         return "";
     }
   }
+
+
+  ////
+
+    $scope.list = [];
+    $scope.text;
+    $scope.submit = function(){
+      alert("Searching");
+    }
+
+
+
 });
 
 
@@ -309,8 +318,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         'billID':$scope.text
       })
        .success(function(res){  
-            // alert("nowSubmit");
-
             $scope.currentBillID = $scope.text;
 
             //Create geoLocation
