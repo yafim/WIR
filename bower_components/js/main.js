@@ -1,11 +1,3 @@
-/**
- * AngularJS Tutorial 1
- * @author Nick Kaye <nick.c.kaye@gmail.com>
- */
-
-/**
- * Main AngularJS Web Application
- */
 var app = angular.module('pageHolder', [
   'ngRoute',
   'ui.map',
@@ -46,12 +38,34 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
 
-  // Activates the Carousel
+    $scope.isCollapsed = true;
+    $scope.$on('$routeChangeSuccess', function () {
+        $scope.isCollapsed = true;
+    });
+    
+    $scope.getClass = function (path) {
+    if(path === '/') {
+        if($location.path() === '/') {
+            return "active";
+        } else {
+            return "";
+        }
+    }
+ 
+    if ($location.path().substr(0, path.length) === path) {
+        return "active";
+    } else {
+        return "";
+    }
+}
+
+  // Activates the Carousel - image changer
   $('.carousel').carousel({
     interval: 5000
   });
 
-  // Activates Tooltips for Social Links
+  // Activates Tooltips for Social Links 
+  //http://www.w3schools.com/bootstrap/bootstrap_tooltip.asp
   $('.tooltip-social').tooltip({
     selector: "a[data-toggle=tooltip]"
   })
@@ -81,13 +95,11 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
 
 /* My Controller */
 app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window) {
-// $('.test').load(function () {
-//   // run code
-//   alert('load');
-//   // showAllMarkers($scope);
-// });
 
-     
+        // Directions - GPS
+        $scope.directionsDisplay = new google.maps.DirectionsRenderer();
+        $scope.chicago = new google.maps.LatLng(37.334818, -121.884886);
+
         // Useful variables
         $scope.currentBillID;
         $scope.lat = "0";
@@ -122,10 +134,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.model.map.setCenter(latlng);
 
             $scope.getDataFromServer();
-
-            // genPolyRoute();
-
-            // $scope.getMapInstance();
 
 
         }
@@ -299,7 +307,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             $scope.sendDataToServer($scope, $http);
 
-            alert("Checked in!!");
+            var successCheckInMessage = "Checked In!" + "\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
+            "(" + $scope.lat + " , " +  $scope.lng + ")";
+
+            alert(successCheckInMessage);
             $route.reload();
        })
        .error(function(err){
