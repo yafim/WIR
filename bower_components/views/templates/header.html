@@ -1,5 +1,5 @@
-<nav ng-controller="NavCtrl" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+    <div class="container" ng-controller="NavCtrl">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" ng-click="isCollapsed = !isCollapsed">
                 <!-- number of white lines -->
@@ -30,11 +30,11 @@
 
 
         <!-- Search form -->
-         <form class="navbar-form" ng-submit="submit()">
+         <form class="navbar-form" ng-submit="submitSearch()" ng-controller="MapController">
             <div class="form-group" style="display:inline;">
               <div class="input-group" style="display:table;">
-                <span class="input-group-addon" style="width:1%;" ><span class="glyphicon glyphicon-search"></span></span>
-                <input class="form-control" name="search" placeholder="Search Bill" autocomplete="off" autofocus="autofocus" type="text">
+                <span class="input-group-addon" ><span class="glyphicon glyphicon-search"></span></span>
+                <input class="form-control" name="search" placeholder="Search Bill" autocomplete="off" autofocus="autofocus" type="text" ng-model="text" >
               </div>
             </div>
           </form>

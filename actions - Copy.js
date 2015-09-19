@@ -43,7 +43,7 @@ var fakeDB = [];
 var places = [
 	{
 		"name" : 'yafim',
-		"lat" : 32.3137373, 
+		"lat" : 32.3137373,
 		"lng" : 34.8803108
 	},
 
@@ -96,12 +96,14 @@ router.get('/insertBillId', function(req, res){
 
 
 router.post('/add', function(req, res){
+
+	//Get variables from req
 	var lat = req.body.lat;
 	var lng = req.body.lng;
+	var name = req.body.name;
 
-	InsertElement(lat, lng);
+	InsertElement(lat, lng, name);
 
-	res.redirect('/map');
 });
 
 
@@ -109,18 +111,20 @@ router.post('/add', function(req, res){
 // 2. redirect to checkIn with current billId 
 // 3. indexToPass - current bill index
 router.post('/billId', function(req, res){
-	var billId = req.body.billId;
+	var billId = req.body.billID;
+	var name = req.body.name;
 
-	isExists = utils.SearchIdInArray(billId, bills);
+
+	isExists = utils.SearchIdInArray(billId, fakeDB);
 
 	// If no exists, Insert new billId to DB. Otherwise indexToPass = isExists
 	if (isExists == -1){
-		var billMarkers = [];
-		bills.push({
-			billId: billId,
-			billMarkers : billMarkers
+		var places = [];
+		fakeDB.push({
+			billID: billId,
+			places : places
 		});
-			indexToPass = bills.length - 1;
+			indexToPass = fakeDB.length - 1;
 	} else {
 		indexToPass = isExists;
 	}
@@ -132,31 +136,29 @@ router.post('/billId', function(req, res){
 
 
 // Insert an element to array
-function InsertElement(lat, lng){
-	var billMarkers = [
+function InsertElement(lat, lng, name){
+	var places = 
 	{
-		"currentLocation" : {"lat" : lat, "lng" : lng }
-	}
-	];
+		"name" : name,
+		"lat" : lat, 
+		"lng" : lng 
+	};
+	
 
-	bills[indexToPass].billMarkers.push({
-		currentLocation : { lat: lat, lng: lng }
-	});
+	fakeDB[indexToPass].places.push(places);
+
 }
 
 router.get('/map/data', function(req, res){
 	var data = {
-		bills: bills,
-		indexToPass: indexToPass,
 		//TODO: DELETE
+		bills: bills,
+		
+		
+		indexToPass: indexToPass,
 		fakeDB: fakeDB
 	};
 	res.json(data);
-});
-
-router.get('/map', function(req, res){
-	// load data from DB here
-	res.render('partials/map');
 });
 
 
