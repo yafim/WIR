@@ -19,8 +19,22 @@
         <div class="col-sm-8">
         <h1>Please Insert Bill Id</h1>
 
-          <ul>
-            <li ng-repeat="bill in fakeDB">{{bill.billID}} : {{bill.places}}</li>
+            <li ng-repeat="bill in fakeDB">
+                Facebook id from ngcontroller pageCtrl:
+             <!--Get the facebook Id-->
+                <div ng-controller="PageCtrl">
+                    {{loggedInUser['authResponse']['userID']}}
+                    </ul>
+                </div>
+
+                Facebook id from property variable: {{fbId}} <br>
+
+                <div ng-controller="MapController">
+                    Facebook id from ngcontroller mapcontroller: {{fbId}} <br>
+
+                </div>
+
+                after: {{bill.billID}} : {{bill.places}}</li>
         </ul>
 
       <!-- Submit button -->

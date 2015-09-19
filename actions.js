@@ -72,13 +72,11 @@ fakeDB.push(arr);
 
 /* END */
 
+// DB settings
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
+var url = 'mongodb://rachel:wir123@ds035563.mongolab.com:35563/rachel';
 
-var mongo = require('mongodb');
-var Server = mongo.Server;
-var Db = mongo.Db;
-var server = new Server('ds035563.mongolab.com', 35563, {auto_reconnect: true});
-var db = new Db('rachel', server);
-//var db = require('mongoskin').db('localhost:27017/bills');
 
 // The main page
 router.get('/', function(req, res){
@@ -149,35 +147,35 @@ function InsertElement(lat, lng, name){
 
 }
 
-router.get('/map/data', function(req, res){
+// router.get('/map/data', function(req, res){
 
-	// Get parameters from url
-	var billID = req.param('currentBillID');
+// 	// Get parameters from url
+// 	var billID = req.param('currentBillID');
 
-	// Search if bill exists
-	var index = utils.findById(fakeDB, "billID", billID);
+// 	// Search if bill exists
+// 	var index = utils.findById(fakeDB, "billID", billID);
 
-	if (index != null){
-		currentBill = fakeDB[index];
-	}
-	else {
-		currentBill = null;
-	}
+// 	if (index != null){
+// 		currentBill = fakeDB[index];
+// 	}
+// 	else {
+// 		currentBill = null;
+// 	}
 
-	// currentBill = (index != null) ? fakeDB[index] : null;
+// 	// currentBill = (index != null) ? fakeDB[index] : null;
 
 
-	var data = {
-		//TODO: DELETE
-		bills: bills,
+// 	var data = {
+// 		//TODO: DELETE
+// 		bills: bills,
 
-		currentBill: currentBill,
+// 		currentBill: currentBill,
 		
-		indexToPass: indexToPass,
-		fakeDB: fakeDB
-	};
-	res.json(data);
-});
+// 		indexToPass: indexToPass,
+// 		fakeDB: fakeDB
+// 	};
+// 	res.json(data);
+// });
 
 router.post('/map/setCurrentBill', function(req, res){
 	var currentBill;
@@ -202,6 +200,28 @@ router.post('/map/setCurrentBill', function(req, res){
 	res.json(data);
 
 });
+
+router.get('/map/data', function(req, res){
+	MongoClient.connect(url, function(err, db) {
+		assert.equal(null, err);
+		findBills(db, function(docs) {
+			db.close();
+			console.dir(docs);
+			res.json(docs);
+		});
+	});
+});
+
+
+var findBills = function(db, callback) {
+	// Get the documents collection
+	var collection = db.collection('bills');
+	// Find some documents
+	collection.find({places: {$elemMatch: {fbID: 1}}}).toArray(function(err, docs) {
+		if (err) throw err;
+		callback(docs);
+	});
+};
 
 
 // Use as module
