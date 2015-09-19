@@ -16,7 +16,6 @@ var app = angular.module('pageHolder', [
  * Configure the Routes
  */
 app.config(['$routeProvider', function ($routeProvider) {
-  // $route.templateUrl = '/views/'; //+ $routeParams.name;
   var path = "views/partials/";
 
   $routeProvider
@@ -29,7 +28,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/services", {templateUrl: path + "services.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
-    .when("/insertBillId", {templateUrl: path + "insertBillId.html", controller: "MapController"})
+    .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController"})
     // Blog
     // .when("/blog", {templateUrl: "partials/blog.html", controller: "BlogCtrl"})
     // .when("/blog/post", {templateUrl: "partials/blog_item.html", controller: "BlogCtrl"})
@@ -66,13 +65,15 @@ app.controller('PageCtrl', function ($scope, $location, $http) {
 app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window) {
 
       // Get data from the server
-        $http.get('/map/data').success(function(data) {
+        $http.get('/map/data')
+        .success(function(data) {
+          // alert("data passed");
         $scope.bills = data.bills;
         $scope.index = data.indexToPass;
+      }) //TODO: error handle..
+        .error(function(err){
+          alert("Error: " + err);
       });
-
-
-
 
         // Useful variables
         $scope.lat = "0";
@@ -106,6 +107,11 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
+
+            showAllMarkers();
+            // genPolyRoute();
+
+
         }
 
         $scope.showError = function (error) {
@@ -129,6 +135,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.getLocation = function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
+
             }
             else {
                 $scope.error = "Geolocation is not supported by this browser.";
@@ -137,24 +144,28 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
         $scope.getLocation();
 
+
+
   /* LOGIC */
   var showAllMarkers = function(scope){
   var marker;
   var index = $scope.index;
-    $scope.bills[index].billMarkers.push();
+  // alert("index: " + $scope.index);
+  // alert("bills: " + $scope.bills);
+  // $scope.bills[$scope.index].billMarkers.push();
+  if ($scope.index){
+      for (var key in $scope.bills[$scope.index].billMarkers){
 
-      for (var key in $scope.bills[index].billMarkers){
-
-          var data = $scope.bills[index].billMarkers[key];
+          var data = $scope.bills[$scope.index].billMarkers[key];
         
           marker = new google.maps.Marker({
             map: $scope.model.map,
-            position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng)
+            position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng) // change
           });
 
-          // Add current location
+          // Add current location - for the route...
          $scope.flightPlanCoordinates.push(marker.position);
-
+}
       }
   }
 
@@ -190,8 +201,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         'lng': $scope.lng
       })
        .success(function(res){
-           alert('Data sent');
-          $window.location.reload();
+           // alert('Data sent');
+          // $window.location.reload();
        })
        .error(function(err){
           alert("Error: " + err);
@@ -236,6 +247,32 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     alert("clackMarker: " + model);
     $log.log("from clackMarker");
     $log.log(model);
+  };
+
+    $scope.list = [];
+    $scope.text;
+  $scope.submit = function() {
+
+    // temp solution...
+      $http.post('/billId',{
+        'billId':$scope.text
+      })
+       .success(function(res){
+
+            genGeoMarker($scope);
+            sendDataToServer($scope, $http, $window);
+
+            alert("Checked in!!");
+            $route.reload();
+
+       })
+       .error(function(err){
+          alert("Error: " + err);
+       });
+
+
+          $scope.text = '';
+
   };
 
 });

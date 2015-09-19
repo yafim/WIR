@@ -6,7 +6,7 @@
 
         <div class="col-lg-12">
             <h1 class="page-header">Bill
-                <small>Insert bill ID</small>
+                <small>Insert bill id</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/">Home</a></li>
@@ -17,19 +17,21 @@
     <div class="row">
 
         <div class="col-sm-8">
-        <h1>Please Insert Bill ID</h1>
+        <h1>Please Insert Bill Id</h1>
 
           <ul>
             <li ng-repeat="bill in bills">{{bill.billId}} : {{bill.billMarkers}}</li>
         </ul>
 
-			<!-- Submit button -->
-			<form action="/billId" method="post" name="bill">
-				<input type="text" ng-model="string" name="billId" ng-minlength="10" ng-maxlength="10" required>
-                <button ng-disabled="bill.$invalid" ng-click="sendDataToServer()">Submit</button>
-			</form>
-      		</div>
-        </div>	
+      <!-- Submit button -->
+      <form ng-submit="submit()">
+        Enter Bill ID and hit enter:
+        <input type="text" ng-model="text" name="text" />
+        <input type="submit" id="submit" value="Check-In" />
+      </form>
+
+      </div>
+        </div>
     </div>
     <!-- /.row -->
 
