@@ -1,3 +1,11 @@
+/**
+ * AngularJS Tutorial 1
+ * @author Nick Kaye <nick.c.kaye@gmail.com>
+ */
+
+/**
+ * Main AngularJS Web Application
+ */
 var app = angular.module('pageHolder', [
   'ngRoute',
   'ui.map',
@@ -29,51 +37,40 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
     .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController"})
-    .otherwise("/404", {templateUrl: path + "404.html", controller: "PageCtrl"});
+    .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);
 
-
 /**
- * General variables
+ * Controls the Blog
  */
-app.service('sharedVariables', function () {
-    var property;
-
-        return {
-            getProperty: function () {
-                return property;
-            },
-            setProperty: function(value) {
-                property = value;
-            }
-        };
-});
-
-app.filter('getById', function() {
-  return function(input, id) {
-    var i=0, len=input.length;
-    for (; i<len; i++) {
-      if (+input[i].id == +id) {
-        return input[i];
-      }
-    }
-    return null;
-  }
-});
-
+// app.controller('BlogCtrl', function ( $scope, $location, $http ) {
+//   console.log("Blog Controller reporting for duty.");
+// });
 
 /**
  * Controls all other Pages
  */
 
 app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
-  // Activates the Carousel - image changer
+  // console.log("Page Controller reporting for duty.");
+
+        $http.get('/map/data')
+        .success(function(data) {
+          // alert("data passed");
+        $scope.fakeDB = data.fakeDB;
+        $scope.bills = data.bills;
+      }) //TODO: error handle..
+        .error(function(err){
+          alert("Error: " + err);
+      });
+      
+
+  // Activates the Carousel
   $('.carousel').carousel({
     interval: 5000
   });
 
-  // Activates Tooltips for Social Links 
-  //http://www.w3schools.com/bootstrap/bootstrap_tooltip.asp
+  // Activates Tooltips for Social Links
   $('.tooltip-social').tooltip({
     selector: "a[data-toggle=tooltip]"
   })
@@ -101,53 +98,28 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope) {
 
 });
 
-/* Navigation bar controller */
-app.controller('NavCtrl', function ($scope, $location,sharedVariables) {
-    // $scope.fakeDB = data.fakeDB;
-    // $scope.index = data.indexToPass;
-
-
-    //Search box toggle
-    // $scope.custom = true;
-
-    //nav bar toggle
-    $scope.isCollapsed = true;
-
-    $scope.$on('$routeChangeSuccess', function () {
-        $scope.isCollapsed = true;
-    });
-
-    $scope.getClass = function (path) {
-    if(path === '/') {
-        if($location.path() === '/') {
-            return "active";
-        } else {
-            return "";
-        }
-    }
-    if ($location.path().substr(0, path.length) === path) {
-        return "active";
-    } else {
-        return "";
-    }
-  }
-
-});
-
-
-
 /* My Controller */
-app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window,sharedVariables, $location, $filter) {
-      //Search box toggle
-    $scope.custom = true;
+app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window) {
+// $('.test').load(function () {
+//   // run code
+//   alert('load');
+//   // showAllMarkers($scope);
+// });
+      // Get data from the server
+        $http.get('/map/data')
+        .success(function(data) {
+          // alert("data passed");
+        $scope.bills = data.bills;
+        $scope.index = data.indexToPass;
+        $scope.fakeDB = data.fakeDB;
+        // alert("index is : " + $scope.index);
+      }) //TODO: error handle..
+        .error(function(err){
+          alert("Error: " + err);
+      });
 
-
-
-
-        // sharedVariables.setProperty($scope.genGeoMarker);
-
+     
         // Useful variables
-        $scope.currentBillID;
         $scope.lat = "0";
         $scope.lng = "0";
         $scope.error = "";
@@ -179,8 +151,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             $scope.latlng = latlng;
             $scope.model.map.setCenter(latlng);
 
-            // $scope.getDataFromServer();
+            showAllMarkers($scope);
+            // genPolyRoute();
 
+            // $scope.getMapInstance();
 
 
         }
@@ -206,6 +180,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.getLocation = function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
+
             }
             else {
                 $scope.error = "Geolocation is not supported by this browser.";
@@ -217,25 +192,26 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
   /* LOGIC */
   var showAllMarkers = function(scope){
-
-    //Useful variables
     var marker;
-    var places;
-    var data;
+    // var index = $scope.index;
+    // alert("index: " + $scope.index);
+    // alert("bills: " + $scope.bills);
+    $scope.bills[$scope.index].billMarkers.push();
 
-      places = $scope.fakeDB[$scope.index].places;
-      // places = $scope.currentBill["places"];
-      // alert(places[0].lat);
-
-      for (var place in places){
+    if ($scope.index){
+        for (var key in $scope.bills[$scope.index].billMarkers){
+                // alert('1');
+            var data = $scope.bills[$scope.index].billMarkers[key];
+          
             marker = new google.maps.Marker({
               map: $scope.model.map,
-              position: new google.maps.LatLng(places[place].lat, places[place].lng)
+              position: new google.maps.LatLng(data.currentLocation.lat, data.currentLocation.lng) // change
             });
 
-        // Add current location - for the Poly route...
-        $scope.flightPlanCoordinates.push(marker.position);
-      }
+            // Add current location - for the route...
+           $scope.flightPlanCoordinates.push(marker.position);
+        }
+    }
   }
 
   var genGeoMarker = function(scope){
@@ -243,9 +219,11 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       map: $scope.model.map,
       position: $scope.latlng
     });
+
+    $scope.flightPlanCoordinates.push($scope.currentMarker.position);
+
   }
 
-  /* Generate a simple line between all the markers */
   var genPolyRoute = function(scope){
     var flightPath = new google.maps.Polyline({
       path: $scope.flightPlanCoordinates,
@@ -257,29 +235,34 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
     flightPath.setMap($scope.model.map);
 
+    $scope.flightPlanCoordinates.push($scope.currentMarker.position);
   }
 
-  /* Insert Data to the server */
-   $scope.sendDataToServer = function (scope, http){
-    var currentBill = $scope.fakeDB[$scope.index];
-    //$scope.currentBill
+  var sendDataToServer = function (scope, http, window){
+    var currentBill = $scope.bills[$scope.index];
 
-
-    // Update the DB
       $http.post('/add',{
-        'name' : 'tempName',
-        // 'billID':$scope.currentBill["billID"],
-        'billID':currentBill.billID,
+        'billId':currentBill.billId,
         'lat': $scope.lat,
         'lng': $scope.lng
       })
        .success(function(res){
            // alert('Data sent');
-
+          // $window.location.reload();
        })
        .error(function(err){
-          console.log("SendDataToServer Error: " + err);
+          alert("Error1: " + err);
        });
+
+   
+  };
+
+  $scope.sendDataToServer = function (){
+    sendDataToServer($scope, $http, $window);
+  };
+
+  $scope.genPolyRoute = function (){
+    genPolyRoute($scope);
   };
 
   // Clear all
@@ -298,11 +281,12 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     return;
   };
 
-  $scope.genAllMarkers = function(){
+  $scope.getMapInstance = function () {
+    // alert("getMapInstance");
     showAllMarkers($scope);
   };
 
-  $scope.genGeoMarker = function () {
+  $scope.genGeoMarker = function (numberOfMarkers) {
     genGeoMarker($scope);
   };
 
@@ -312,99 +296,35 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $log.log(model);
   };
 
-  $scope.getDataFromServer = function(billID){
-      // Get data from the server
-        $http.get('/map/data', {
-          params: { currentBillID: billID }
-        })
-        .success(function(data) {
-          $scope.fakeDB = data.fakeDB;
-          $scope.index = data.indexToPass;
-
-          $scope.currentBill = data.currentBill;
-
-          // Trick...
-          showAllMarkers($scope);
-          // genPolyRoute($scope);
-      
-
-      // if (data.currentBill != null){
-      //   alert("FOUND!!!");
-      // }
-
-      // else {
-      //   alert("not found");
-      // }
-
-      }) //TODO: error handle..
-        .error(function(err){
-          console.log("getDataFromServer - Error: " + err);
-      });
-  };
-
 
     $scope.list = [];
     $scope.text;
-  $scope.submitSearch = function(){
+  $scope.submit = function() {
 
-    // $currentBillID = $scope.text;
-
-    $scope.getDataFromServer($scope.text);
-    // ,success;
-
-    
-    // $location.path("map");
-    //         $route.reload();
-    // $scope.currentBillID = $scope.text;
-    //         $route.reload();
-    if ($scope.currentBill != null){
-            $scope.submit();
-            alert("he");
-            $route.reload();
-    }
-    else {
-      // alert("Not Found");
-      $scope.text='';
-    }
-
-
-  }
-
-  $scope.submit = function(txt) {
     // temp solution...
       $http.post('/billId',{
-        'billID':$scope.text
+        'billId':$scope.text
       })
-       .success(function(res){  
-            $scope.currentBillID = $scope.text;
+       .success(function(res){
 
-            //Create geoLocation
-            genGeoMarker($scope);
+            // genGeoMarker($scope);
+            genGeoMarker();
+            sendDataToServer($scope, $http, $window);
+            // showAllMarkers($scope);
+            // alert("Checked in!!");
+            
+             $route.reload();
 
-            $scope.sendDataToServer($scope, $http);
 
-            var successCheckInMessage = "Checked In!" + "\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
-            "(" + $scope.lat + " , " +  $scope.lng + ")";
-
-            alert(successCheckInMessage);
-            $route.reload();
        })
        .error(function(err){
-          alert("ErrorSubmit: " + err);
+          alert("Error: " + err);
        });
-  };
 
-  // Search for a bill by id
-  $scope.searchById = function(arr, id){
-    // alert(id);
-   var found = $filter('filter')(arr, {billID: id}, true);
-   if (found.length) {
-       $scope.selected = JSON.stringify(found[0]);
-   } else {
-       $scope.selected = 'Not found';
-   }
-  };
+    
+          $scope.text = '';
 
+  };
 
 
 });

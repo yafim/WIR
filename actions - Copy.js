@@ -34,8 +34,6 @@ var arr = {
 bills.push(arr);
 
 /* END OF DB*/
-
-/* NEW FAKE DB */
 var currentBillId = [];
 var indexToPass = 0;
 
@@ -69,6 +67,8 @@ var arr = {
 }
 
 fakeDB.push(arr);
+
+/* NEW FAKE DB */
 
 /* END */
 
@@ -150,57 +150,15 @@ function InsertElement(lat, lng, name){
 }
 
 router.get('/map/data', function(req, res){
-
-	// Get parameters from url
-	var billID = req.param('currentBillID');
-
-	// Search if bill exists
-	var index = utils.findById(fakeDB, "billID", billID);
-
-	if (index != null){
-		currentBill = fakeDB[index];
-	}
-	else {
-		currentBill = null;
-	}
-
-	// currentBill = (index != null) ? fakeDB[index] : null;
-
-
 	var data = {
 		//TODO: DELETE
 		bills: bills,
-
-		currentBill: currentBill,
+		
 		
 		indexToPass: indexToPass,
 		fakeDB: fakeDB
 	};
 	res.json(data);
-});
-
-router.post('/map/setCurrentBill', function(req, res){
-	var currentBill;
-	var billID = req.body.billIDToSearch;
-
-	// Search if bill exists
-	var index = utils.findById(fakeDB, "billID", billID);
-
-	// if (index != null){
-	// 	currentBill = fakeDB[index];
-	// }
-	// else {
-	// 	currentBill = null;
-	// }
-
-	currentBill = (index != null) ? fakeDB[index] : null;
-
-
-	var data = {
-		currentBill: currentBill
-	};
-	res.json(data);
-
 });
 
 
