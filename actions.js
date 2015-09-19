@@ -150,7 +150,7 @@ function InsertElement(lat, lng, name){
 // router.get('/map/data', function(req, res){
 
 // 	// Get parameters from url
-// 	var billID = req.param('currentBillID');
+// 	var billID = req.param('userFBId');
 
 // 	// Search if bill exists
 // 	var index = utils.findById(fakeDB, "billID", billID);
@@ -201,10 +201,11 @@ router.post('/map/setCurrentBill', function(req, res){
 
 });
 
-router.get('/map/data', function(req, res){
+router.get('/map/getUserBills', function(req, res){
+	var id = req.param('userFBId');
 	MongoClient.connect(url, function(err, db) {
 		assert.equal(null, err);
-		findBills(db, function(docs) {
+		findBills(db, id, function(docs) {
 			db.close();
 			console.dir(docs);
 			res.json(docs);
@@ -213,11 +214,11 @@ router.get('/map/data', function(req, res){
 });
 
 
-var findBills = function(db, callback) {
+var findBills = function(db, id, callback) {
 	// Get the documents collection
 	var collection = db.collection('bills');
 	// Find some documents
-	collection.find({places: {$elemMatch: {fbID: 1}}}).toArray(function(err, docs) {
+	collection.find({places: {$elemMatch: {fbID: id}}}).toArray(function(err, docs) {
 		if (err) throw err;
 		callback(docs);
 	});

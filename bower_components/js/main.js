@@ -319,10 +319,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $log.log(model);
   };
 
-  $scope.getDataFromServer = function(billID){
+  $scope.getDataFromServer = function(){
       // Get data from the server
-        $http.get('/map/data', {
-          // params: { currentBillID: billID }
+        $http.get('/map/getUserBills', {
+          params: { userFBId: $scope.fbId }
         })
         .success(function(data) {
           $scope.fakeDB = data;
