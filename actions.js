@@ -51,16 +51,6 @@ var insertBill = function(db, bID, fID, username, lati, long, callback) {
 		});
 };
 
-var findBillByID = function(db, id, callback) {
-	// Get the documents collection
-	var collection = db.collection('bills');
-	// Find some documents
-	collection.find(billID: id}).toArray(function(err, docs) {
-		if (err) throw err;
-		callback(docs);
-	});
-};
-
 router.post('/map/checkIn', function(req, res){
 	var billID = req.body.billID;
 	var lat = req.body.lat;
