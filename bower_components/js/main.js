@@ -2,7 +2,6 @@ var app = angular.module('pageHolder', [
   'ngRoute',
   'ui.map',
     'facebookUtils'
-  // 'ui.event'
 ]);
 
 app.constant('facebookConfigSettings', {
@@ -25,9 +24,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/about", {templateUrl: path + "about.html", controller: "PageCtrl"})
     .when("/faq", {templateUrl: path + "faq.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
-    .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
-    .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController"})
-    .when("/myBills", {templateUrl: path + "myBills.html", controller: "MapController"})
+    // .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
+    .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController", needAuth: true})
+    .when("/myBills", {templateUrl: path + "myBills.html", controller: "MapController", needAuth: true})
     .otherwise("/404", {templateUrl: path + "404.html", controller: "PageCtrl"});
 }]);
 
@@ -214,22 +213,22 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     var places;
     var data;
 
-      places = $scope.places; 
+    places = $scope.places; 
 
-      for (var place in places){
-            marker = new google.maps.Marker({
-              map: $scope.model.map,
-              position: new google.maps.LatLng(places[place].lat, places[place].lng)
-            });
+    for (var place in places){
+          marker = new google.maps.Marker({
+            map: $scope.model.map,
+            position: new google.maps.LatLng(places[place].lat, places[place].lng)
+          });
 
-        
-        // Add marker to list
-        $scope.myMarkers.push(marker);
+      
+      // Add marker to list
+      $scope.myMarkers.push(marker);
 
-        // Add current location - for the Poly route...
-        $scope.flightPlanCoordinates.push(marker.position);
-      }
-          genPolyRoute($scope);
+      // Add current location - for the Poly route...
+      $scope.flightPlanCoordinates.push(marker.position);
+    }
+
   }
 
   var genGeoMarker = function(scope){
@@ -241,7 +240,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
   /* Generate a simple line between all the markers */
   var genPolyRoute = function(scope){
-// alert("p");
     var polyLine = new google.maps.Polyline({
       path: $scope.flightPlanCoordinates,
       geodesic: true,
@@ -253,19 +251,16 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     polyLine.setMap($scope.model.map);
 
     $scope.line.push(polyLine);
-
-
-
-  }
+  };
 
   /* Insert Data to the server */
-   $scope.sendDataToServer = function (scope, http){
+  $scope.sendDataToServer = function (scope, http){
     var currentBill = $scope.fakeDB[$scope.index];
 
     // Update the DB
       $http.post('/add',{
         'name' : 'tempName',
-        // 'billID':$scope.currentBill["billID"],
+        'fbID' : $scope.fbId,
         'billID':currentBill.billID,
         'lat': $scope.lat,
         'lng': $scope.lng
@@ -319,7 +314,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $log.log(model);
   };
 
-  $scope.getDataFromServer = function(){
+  $scope.getUserBillsById = function(){
       // Get data from the server
         $http.get('/map/getUserBills', {
           params: { userFBId: $scope.fbId }
@@ -330,7 +325,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
       }) //TODO: error handle..
         .error(function(err){
-          console.log("getDataFromServer - Error: " + err);
+          console.log("getUserBillsById - Error: " + err);
       });
   };
 
@@ -341,7 +336,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
     // $currentBillID = $scope.text;
 
-    $scope.getDataFromServer($scope.text);
+    $scope.getUserBillsById($scope.text);
 
     if ($scope.currentBill != null){
             $scope.submit();
@@ -352,10 +347,15 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     }
   }
 
-  $scope.submit = function(txt) {
+  $scope.submit = function() {
+    // alert("billID : " + $scope.text);
     // temp solution...
-      $http.post('/billId',{
-        'billID':$scope.text
+      $http.post('/map/checkIn',{
+        'name' : 'tempName',
+        'fbID' : $scope.fbId,
+        'billID':$scope.text,
+        'lat': $scope.lat,
+        'lng': $scope.lng
       })
        .success(function(res){  
             $scope.currentBillID = $scope.text;
@@ -363,7 +363,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             //Create geoLocation
             genGeoMarker($scope);
 
-            $scope.sendDataToServer($scope, $http);
+            // $scope.sendDataToServer($scope, $http);
 
             var successCheckInMessage = "Checked In!" + "\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
             "(" + $scope.lat + " , " +  $scope.lng + ")";
