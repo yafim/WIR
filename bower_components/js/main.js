@@ -147,7 +147,7 @@ app.controller('NavCtrl', function ($scope, $location,sharedVariables) {
 
 /* My Controller */
 app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window,sharedVariables, $location, $filter, usSpinnerService, $rootScope) {
-      //Search box toggle
+    //Search box toggle
     $scope.custom = true;
 
     // FaceBook id
@@ -187,7 +187,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.latlng = latlng;
         $scope.model.map.setCenter(latlng);
     
-
+$scope.startSpin();
     }
 
     $scope.showError = function (error) {
@@ -336,7 +336,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
           params: { userFBId: $scope.fbId }
         })
         .success(function(data) {
-          $scope.fakeDB = data;
+          $scope.bills = data;
           // $scope.index = 0;
 // $scope.stopSpin();
 
@@ -365,6 +365,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   }
 
   $scope.submit = function() {
+
+    if ($scope.fbId){
     // alert("billID : " + $scope.text);
     // temp solution...
       $http.post('/map/checkIn',{
@@ -391,6 +393,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
        .error(function(err){
           alert("ErrorSubmit: " + err);
        });
+     }
+     else {
+      alert("Please Login with facebook account");
+     }
   };
 
   // Search for a bill by id

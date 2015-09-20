@@ -1,6 +1,6 @@
   <!-- Page Content -->
 
-    <div class="container" ng-init="getUserBillsById()">
+    <div class="container" ng-init='getUserBillsById()'>
 
     <div class="row">
 
@@ -16,14 +16,21 @@
 
     <div class="row">
 
+<!-- TEST... to delete -->
+        <!-- <input type="button" ng-click="startSpin()" value="Start spinner" /> -->
+        <!-- <input type="button" ng-click="stopSpin()" value="Stop spinner" /> -->
 <!-- END OF TEST -->
+
+            <span us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" spinner-key="spinner-1"></span>
+
+
         <div class="col-sm-8">
         <h1>Click for locations </h1>
         FaceBook id : {{fbId}}
         
           <ul>
-            <li ng-repeat="bill in fakeDB" ng-init="startSpin()" on-finish-render="ngRepeatFinished" ng-cloak><a href ng-click="showMarkerById(fakeDB, bill.billID)">{{bill.billID}}</a> </li>
-            <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+            <li ng-repeat="bill in bills" on-finish-render="ngRepeatFinished" ng-cloak><a href ng-click="showMarkerById(bills, bill.billID)">{{bill.billID}}</a> </li>
+
         </ul>
 
       </div>
