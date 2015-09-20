@@ -16,12 +16,14 @@
 
     <div class="row">
 
+<!-- END OF TEST -->
         <div class="col-sm-8">
         <h1>Click for locations </h1>
         FaceBook id : {{fbId}}
-
+        
           <ul>
-            <li ng-repeat="bill in fakeDB"><a href ng-click="showMarkerById(fakeDB, bill.billID)">{{bill.billID}}</a> </li>
+            <li ng-repeat="bill in fakeDB" ng-init="startSpin()" on-finish-render="ngRepeatFinished" ng-cloak><a href ng-click="showMarkerById(fakeDB, bill.billID)">{{bill.billID}}</a> </li>
+            <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
         </ul>
 
       </div>

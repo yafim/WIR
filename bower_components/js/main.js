@@ -1,8 +1,22 @@
 var app = angular.module('pageHolder', [
   'ngRoute',
   'ui.map',
-    'facebookUtils'
-]);
+  'facebookUtils',
+  'angularSpinner'
+])
+
+    .directive('onFinishRender', function ($timeout) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished');
+                });
+            }
+        }
+    }
+});
 
 app.constant('facebookConfigSettings', {
     'appID' : '927002334009260',
@@ -132,10 +146,10 @@ app.controller('NavCtrl', function ($scope, $location,sharedVariables) {
 
 
 /* My Controller */
-app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window,sharedVariables, $location, $filter) {
+app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window,sharedVariables, $location, $filter, usSpinnerService, $rootScope) {
       //Search box toggle
     $scope.custom = true;
-    
+
     // FaceBook id
     $scope.fbId = sharedVariables.getProperty();
         
@@ -172,6 +186,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
         $scope.latlng = latlng;
         $scope.model.map.setCenter(latlng);
+    
 
     }
 
@@ -254,25 +269,25 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   };
 
   /* Insert Data to the server */
-  $scope.sendDataToServer = function (scope, http){
-    var currentBill = $scope.fakeDB[$scope.index];
+  // $scope.sendDataToServer = function (scope, http){
+  //   var currentBill = $scope.fakeDB[$scope.index];
 
-    // Update the DB
-      $http.post('/add',{
-        'name' : 'tempName',
-        'fbID' : $scope.fbId,
-        'billID':currentBill.billID,
-        'lat': $scope.lat,
-        'lng': $scope.lng
-      })
-       .success(function(res){
-           // alert('Data sent');
+  //   // Update the DB
+  //     $http.post('/add',{
+  //       'name' : 'tempName',
+  //       'fbID' : $scope.fbId,
+  //       'billID':currentBill.billID,
+  //       'lat': $scope.lat,
+  //       'lng': $scope.lng
+  //     })
+  //      .success(function(res){
+  //          // alert('Data sent');
 
-       })
-       .error(function(err){
-          console.log("SendDataToServer Error: " + err);
-       });
-  };
+  //      })
+  //      .error(function(err){
+  //         console.log("SendDataToServer Error: " + err);
+  //      });
+  // };
 
   // Clear all
   $scope.removeMarkers = function () {
@@ -315,13 +330,15 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   };
 
   $scope.getUserBillsById = function(){
+
       // Get data from the server
         $http.get('/map/getUserBills', {
           params: { userFBId: $scope.fbId }
         })
         .success(function(data) {
           $scope.fakeDB = data;
-          $scope.index = 0;
+          // $scope.index = 0;
+// $scope.stopSpin();
 
       }) //TODO: error handle..
         .error(function(err){
@@ -396,4 +413,36 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     genPolyRoute($scope);
 
   };
+
+
+
+  // Loading spinner
+    $scope.startSpin = function() {
+    if (!$scope.spinneractive) {
+      usSpinnerService.spin('spinner-1');
+      $scope.startcounter++;
+    }
+  };
+
+    $scope.stopSpin = function() {
+    if ($scope.spinneractive) {
+      usSpinnerService.stop('spinner-1');
+    }
+  };
+    
+    $scope.spinneractive = false;
+
+
+    $rootScope.$on('us-spinner:spin', function(event, key) {
+      $scope.spinneractive = true;
+    });
+
+    $rootScope.$on('us-spinner:stop', function(event, key) {
+      $scope.spinneractive = false;
+    });
+
+    $rootScope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+      $scope.stopSpin();
+    });
+
 });
