@@ -377,7 +377,7 @@ $scope.startSpin();
         'lng': $scope.lng
       })
        .success(function(data){  
-            // $scope.currentBillID = $scope.text;
+            $scope.currentBillID = $scope.text;
             $scope.currentBill = data[0];
             // $scope.myTest = JSON.stringify(data);
 
