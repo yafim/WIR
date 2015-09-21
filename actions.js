@@ -18,6 +18,7 @@ router.get('/', function(req, res){
 	res.render('index')
 });
 
+// Get bill by facebook id
 router.get('/map/getUserBills', function(req, res){
 	var id = req.param('userFBId');
 	MongoClient.connect(url, function(err, db) {
@@ -29,6 +30,20 @@ router.get('/map/getUserBills', function(req, res){
 		});
 	});
 });
+
+// Get bill by id
+router.get('/map/getBillById', function(req, res){
+	var id = req.param('billID');
+	MongoClient.connect(url, function(err, db) {
+		assert.equal(null, err);
+		findBillByID(db, id, function(docs) {
+			db.close();
+			console.dir(docs);
+			res.json(docs);
+		});
+	});
+});
+
 
 
 var findBills = function(db, id, callback) {
@@ -60,25 +75,6 @@ var findBillByID = function(db, id, callback) {
 		callback(docs);
 	});
 };
-
-
-// router.post('/map/checkIn', function(req, res){
-// 	var billID = req.body.billID;
-// 	var lat = req.body.lat;
-// 	var lng = req.body.lng;
-// 	var fbID = req.body.fbID;
-// 	var username = req.body.name;
-
-// 	MongoClient.connect(url, function(err, db) {
-// 		assert.equal(null, err);
-// 		insertBill(db, billID, fbID, username, lat, lng, function(isSuccess) {
-// 			db.close();
-// 			res.render(__dirname + "/bower_components/views/partials/checkIn" , {
-// 				response: isSuccess
-// 			});
-// 		});
-// 	});
-// });
 
 router.post('/map/checkIn', function(req, res){
 	var billID = req.body.billID;

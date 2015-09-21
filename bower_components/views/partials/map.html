@@ -1,7 +1,7 @@
 	<!-- Page Content -->
 	<!-- <script src="http://cdn.rawgit.com/nmccready/angular-simple-logger/0.0.1/dist/index.js"></script><script src="../dist/angular-google-maps_dev_mapped.js"></script> -->
 
-    <div class="container" >
+    <div class="container" ng-init="initMap()">
 
     <div class="row">
 
@@ -16,20 +16,7 @@
         </div>
 
 
-            <div class="row">
-				<div class="page-title">
-					</div>
-					<!-- <button class="btn btn-danger" ng-click="removeMarkers()">Clear Map</button> -->
-					<button class="btn btn-success" ng-click="refreshMap()">Refresh Map</button>
-					<button class="btn btn-success" ng-click="genAllMarkers()">Show all Markers</button>
-					<button class="btn btn-success" ng-click="genGeoMarker()">Current Location</button>
-					
-					<button class="btn btn-success" ng-click="genPolyRoute()">Gen Route</button>
 
-
-					<button class="btn btn-danger" ng-click="sendDataToServer()">Post</button>
-
-				</div>
 
 
            <div class="row" >
@@ -38,7 +25,6 @@
 
 			</div>
 
-	        <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]" ></div>
 
             </div>
 

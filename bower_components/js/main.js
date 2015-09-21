@@ -38,7 +38,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/about", {templateUrl: path + "about.html", controller: "PageCtrl"})
     .when("/faq", {templateUrl: path + "faq.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
-    // .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
+    .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
     .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController", needAuth: true})
     .when("/myBills", {templateUrl: path + "myBills.html", controller: "MapController", needAuth: true})
     .otherwise("/404", {templateUrl: path + "404.html", controller: "PageCtrl"});
@@ -50,10 +50,17 @@ app.config(['$routeProvider', function ($routeProvider) {
  */
 app.service('sharedVariables', function () {
     var property = '';
+    var currentBill;
 
         return {
             getProperty: function () {
                 return property;
+            },
+            getCurrentBill: function (){
+                return currentBill;
+            },
+            setCurrentBill: function(value){
+                currentBill = value;
             },
             setProperty: function(value) {
                 property = value;
@@ -187,7 +194,11 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.latlng = latlng;
         $scope.model.map.setCenter(latlng);
     
-$scope.startSpin();
+        $scope.startSpin();
+        
+        if ($scope.currentBill){
+            showAllMarkers($scope);
+        }
     }
 
     $scope.showError = function (error) {
@@ -268,27 +279,6 @@ $scope.startSpin();
     $scope.line.push(polyLine);
   };
 
-  /* Insert Data to the server */
-  // $scope.sendDataToServer = function (scope, http){
-  //   var currentBill = $scope.fakeDB[$scope.index];
-
-  //   // Update the DB
-  //     $http.post('/add',{
-  //       'name' : 'tempName',
-  //       'fbID' : $scope.fbId,
-  //       'billID':currentBill.billID,
-  //       'lat': $scope.lat,
-  //       'lng': $scope.lng
-  //     })
-  //      .success(function(res){
-  //          // alert('Data sent');
-
-  //      })
-  //      .error(function(err){
-  //         console.log("SendDataToServer Error: " + err);
-  //      });
-  // };
-
   // Clear all
   $scope.removeMarkers = function () {
         for (var i = 0; i < $scope.myMarkers.length; i++) {
@@ -351,24 +341,36 @@ $scope.startSpin();
     $scope.text;
   $scope.submitSearch = function(){
 
-    // $currentBillID = $scope.text;
+    $http.get('/map/getBillById', {
+        // 'billID':$scope.text
+        params: { billID: $scope.text }
+      })
+       .success(function(data){  
 
-    $scope.getUserBillsById($scope.text);
-
-    if ($scope.currentBill != null){
-            $scope.submit();
+        $scope.text = '';
+        if (data[0] != null){
+            sharedVariables.setCurrentBill(data[0]);
+            $location.path("/map");
             $route.reload();
-    }
-    else {
-      $scope.text='';
-    }
-  }
+        } 
+        else {
+            alert("Bill Not Found");
+            $scope.removeMarkers();
+        }
+        
+
+
+       })
+       .error(function(err){
+          alert("ErrorSubmitSearch: " + err);
+       });
+
+
+  };
 
   $scope.submit = function() {
 
     if ($scope.fbId){
-    // alert("billID : " + $scope.text);
-    // temp solution...
       $http.post('/map/checkIn',{
         'name' : 'tempName',
         'fbID' : $scope.fbId,
@@ -379,7 +381,6 @@ $scope.startSpin();
        .success(function(data){  
             $scope.currentBillID = $scope.text;
             $scope.currentBill = data[0];
-            // $scope.myTest = JSON.stringify(data);
 
             $scope.places = data[0].places;
 
@@ -415,7 +416,6 @@ $scope.startSpin();
    }
   };
 
-
   $scope.showMarkerById = function(arr, id){
     $scope.searchById(arr, id);
     $scope.places = $scope.selected.places;
@@ -425,9 +425,12 @@ $scope.startSpin();
     genPolyRoute($scope);
 
   };
-
-
-
+    
+  $scope.initMap = function(){
+      $scope.currentBill = sharedVariables.getCurrentBill();
+      $scope.places = $scope.currentBill.places;
+  };
+    
   // Loading spinner
     $scope.startSpin = function() {
     if (!$scope.spinneractive) {
