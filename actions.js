@@ -51,6 +51,35 @@ var insertBill = function(db, bID, fID, username, lati, long, callback) {
 		});
 };
 
+var findBillByID = function(db, id, callback) {
+	// Get the documents collection
+	var collection = db.collection('bills');
+	// Find some documents
+	collection.find({billID: id}).toArray(function(err, docs) {
+		if (err) throw err;
+		callback(docs);
+	});
+};
+
+
+// router.post('/map/checkIn', function(req, res){
+// 	var billID = req.body.billID;
+// 	var lat = req.body.lat;
+// 	var lng = req.body.lng;
+// 	var fbID = req.body.fbID;
+// 	var username = req.body.name;
+
+// 	MongoClient.connect(url, function(err, db) {
+// 		assert.equal(null, err);
+// 		insertBill(db, billID, fbID, username, lat, lng, function(isSuccess) {
+// 			db.close();
+// 			res.render(__dirname + "/bower_components/views/partials/checkIn" , {
+// 				response: isSuccess
+// 			});
+// 		});
+// 	});
+// });
+
 router.post('/map/checkIn', function(req, res){
 	var billID = req.body.billID;
 	var lat = req.body.lat;
@@ -61,9 +90,10 @@ router.post('/map/checkIn', function(req, res){
 	MongoClient.connect(url, function(err, db) {
 		assert.equal(null, err);
 		insertBill(db, billID, fbID, username, lat, lng, function(isSuccess) {
-			db.close();
-			res.render(__dirname + "/bower_components/views/partials/checkIn" , {
-				response: isSuccess
+			if (!isSuccess) console.log('There was a problem checking in.');
+			findBillByID(db, billID, function(docs) {
+				db.close();
+				res.json(docs);
 			});
 		});
 	});

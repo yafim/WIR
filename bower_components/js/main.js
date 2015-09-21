@@ -376,19 +376,25 @@ $scope.startSpin();
         'lat': $scope.lat,
         'lng': $scope.lng
       })
-       .success(function(res){  
-            $scope.currentBillID = $scope.text;
+       .success(function(data){  
+            // $scope.currentBillID = $scope.text;
+            $scope.currentBill = data[0];
+            // $scope.myTest = JSON.stringify(data);
 
-            //Create geoLocation
+            $scope.places = data[0].places;
+
+            $scope.removeMarkers();
+            
             genGeoMarker($scope);
 
-            // $scope.sendDataToServer($scope, $http);
+            showAllMarkers($scope);
+
 
             var successCheckInMessage = "Checked In!" + "\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
             "(" + $scope.lat + " , " +  $scope.lng + ")";
 
             alert(successCheckInMessage);
-            $route.reload();
+
        })
        .error(function(err){
           alert("ErrorSubmit: " + err);
