@@ -29,7 +29,7 @@
 
 
         <!-- Search form -->
-         <form class="navbar-form" ng-submit="submitSearch()" ng-controller="MapController">
+         <form class="navbar-form" ng-submit="submitSearch()" ng-controller="MapController" ng-init="focus=false;blur=false;active=false">
             <div class="form-group" style="display:inline;">
               <div class="input-group" style="display:table;">
                 <span class="input-group-addon" ><span class="glyphicon glyphicon-search"></span></span>
