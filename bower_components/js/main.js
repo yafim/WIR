@@ -68,10 +68,11 @@ app.service('sharedVariables', function () {
         };
 });
 
+// Find bill by id
 app.filter('getById', function() {
   return function(input, id) {
-    var i=0, len=input.length;
-    for (; i<len; i++) {
+    var len=input.length;
+    for (var i=0; i<len; i++) {
       if (+input[i].id == +id) {
         return input[i];
       }
@@ -216,7 +217,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
                 $scope.error = "An unknown error occurred."
                 break;
         }
+        alert($scope.error);
         $scope.$apply();
+        
     }
 
     $scope.getLocation = function () {
