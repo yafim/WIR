@@ -207,7 +207,6 @@ margin: 0 0 100px; /* bottom = footer height */
         position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
     width: 100%;
 }
     
