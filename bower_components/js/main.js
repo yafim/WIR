@@ -160,6 +160,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
     // FaceBook id
     $scope.fbId = sharedVariables.getProperty();
+    
+    $scope.logged = ($scope.fbId) ? "Logged" : null;
         
     // Useful variables
     $scope.line = [];

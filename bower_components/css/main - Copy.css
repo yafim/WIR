@@ -7,21 +7,21 @@ For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap
 
 /* Global Styles */
 
-html {
-    position: relative;
-    min-height: 100%;
+html, body {
+    height: 100%;
 }
 
 body {
-margin: 0 0 100px; /* bottom = footer height */
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 /* Footer Styles */
-/*footer {
+footer {
     position: absolute;
     bottom: 0;
     margin: 0;
-}*/
+}
 
 @media (max-height:800px){
     header { padding-top:40px; }
@@ -45,7 +45,7 @@ margin: 0 0 100px; /* bottom = footer height */
 /* Page Sections */
 .section,
 .section-colored {
-    padding: 63px 0px 0px 0px;
+    padding: 50px 0;
 }
 
 .section-colored {
@@ -197,18 +197,13 @@ margin: 0 0 100px; /* bottom = footer height */
 .footer-distributed{
     background-color: #2E2E2E;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-    /*box-sizing: border-box;*/
-    /*width: 100%;*/
+    box-sizing: border-box;
+    width: 100%;
     text-align: left;
     font: normal 16px sans-serif;
 
-    padding: 25px 33px 0px 33px;
-
-        position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
+    padding: 45px 50px;
+    margin-top: 0px;
 }
     
 .footer-distributed .footer-left p{
