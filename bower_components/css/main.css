@@ -45,7 +45,7 @@ margin: 0 0 100px; /* bottom = footer height */
 /* Page Sections */
 .section,
 .section-colored {
-    padding: 63px 0px 0px 0px;
+    padding: 33px 0px 0px 0px;
 }
 
 .section-colored {
@@ -202,7 +202,7 @@ margin: 0 0 100px; /* bottom = footer height */
     text-align: left;
     font: normal 16px sans-serif;
 
-    padding: 25px 33px 0px 33px;
+    padding: 0px 33px 0px 33px;
 
         position: absolute;
     left: 0;
