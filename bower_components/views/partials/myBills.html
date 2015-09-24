@@ -27,10 +27,16 @@
         <h1>Click for locations </h1>
         FaceBook id : {{fbId}}
         
-          <ul>
+<!--           <ul>
             <li ng-repeat="bill in bills" on-finish-render="ngRepeatFinished" ng-cloak><a href ng-click="showMarkerById(bills, bill.billID)">{{bill.billID}}</a> </li>
 
-        </ul>
+        </ul> -->
+
+        <!-- <select ng-model="bills" ng-change="showMarkerById(bills, bill.billID)" ng-options="bill in bills"> -->
+        <select ng-model="selectBill" ng-change="showMarkerById(bills)" >
+            <option value="">---Please select---</option>
+            <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished">{{bill.billID}}</option>
+        </select>
 
       </div>
         </div>

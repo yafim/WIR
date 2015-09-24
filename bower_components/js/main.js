@@ -421,13 +421,14 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
    }
   };
 
-  $scope.showMarkerById = function(arr, id){
-    $scope.searchById(arr, id);
+  $scope.showMarkerById = function(arr){
+    $scope.searchById(arr, $scope.selectBill);
     $scope.places = $scope.selected.places;
     $scope.removeMarkers();
 
     showAllMarkers($scope);
     genPolyRoute($scope);
+    // alert(id);
 
   };
     
