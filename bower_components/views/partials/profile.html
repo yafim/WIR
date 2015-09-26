@@ -1,5 +1,5 @@
 
-<div  align="center">
+<div  align="center" >
     <div class="card hovercard">
         <div class="card-background">
             <img class="card-bkimg" alt="" src="http://lorempixel.com/100/100/people/9/">
@@ -33,13 +33,20 @@
         </div>
     </div>
 
+            <span us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" spinner-key="spinner-1"></span>
+
     <div class="well">
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tab1">
                 <h3>Your rank is 2/15</h3>
             </div>
-            <div class="tab-pane fade in" id="tab2">
-                <h3>You have 3 bills</h3>
+
+
+
+
+            <div class="tab-pane fade in" id="tab2" ng-controller="MapController" ng-init="getUserBillsById()">
+                <h3>You have {{numberOfBills}} bills</h3>
+                <!-- <h3>{{bills.length}}</h3> -->
             </div>
             <div class="tab-pane fade in" id="tab3">
                 <h3>Followers:</h3>

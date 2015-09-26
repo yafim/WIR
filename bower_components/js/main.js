@@ -333,21 +333,21 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
   $scope.getUserBillsById = function(){
 
+if ($scope.fbId){
       // Get data from the server
         $http.get('/map/getUserBills', {
           params: { userFBId: $scope.fbId }
         })
         .success(function(data) {
           $scope.bills = data;
-          // $scope.index = 0;
-// $scope.stopSpin();
+          $scope.numberOfBills = data.length;
 
       }) //TODO: error handle..
         .error(function(err){
           console.log("getUserBillsById - Error: " + err);
       });
   };
-
+}
 
     $scope.list = [];
     $scope.text;
