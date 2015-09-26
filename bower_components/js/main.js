@@ -163,26 +163,39 @@ app.controller('NavCtrl', function ($scope, $location,sharedVariables) {
 app.controller('MapController', function ($scope, $timeout, $log, $http, $route, $window,sharedVariables, $location, $filter, usSpinnerService, $rootScope) {
     //Search box toggle
     $scope.custom = true;
-
+    
     // FaceBook id
     $scope.fbId = sharedVariables.getProperty();
+
+    // alert($scope.fbId);
     
-    $scope.logged = ($scope.fbId) ? "Logged" : null;
+    // $scope.logged = ($scope.fbId) ? "Logged" : null;
         
     // Useful variables
-    $scope.onlyNumbers = /^\d+$/;
-    $scope.line = [];
-    $scope.currentBillID;
-    $scope.lat = "0";
-    $scope.lng = "0";
-    $scope.error = "";
-    $scope.model = { map: "" };
-    $scope.myMarkers = [];
+    $scope.onlyNumbers = /^\d+$/; // validate input 
+    $scope.currentBillID; // current billId
+
+    // Locations
+    $scope.lat = "0"; // latitude
+    $scope.lng = "0"; // longtitude
     $scope.latlng = new google.maps.LatLng(0, 0);
 
-    $scope.flightPlanCoordinates = [];
+    $scope.error = ""; // error message
+
+    $scope.model = { map: "" }; // map id/model
+    
+    
+    $scope.myMarkers = []; // holds markers array 
+    $scope.line = []; // holds poly line array
+    
+    $scope.polyLineCoordinates = []; // poly line coordinates 
     $scope.currentMarker;
 
+    // textbox
+    $scope.list = [];
+    $scope.text;
+
+    // GoogleMap options
     $scope.mapOptions = {
         zoom: 11,
         center: new google.maps.LatLng($scope.lat, $scope.lng),
@@ -190,27 +203,32 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         navigationControlOptions: {
           style: google.maps.NavigationControlStyle.SMALL
         },
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+
+        mapTypeId: google.maps.MapTypeId.ROADMAP 
     };
 
+    // set map with current location - geo location
     $scope.showPosition = function (position) {
         $scope.lat = position.coords.latitude;
         $scope.lng = position.coords.longitude;
         
         $scope.$apply();
-        
+
+        // current location
         var latlng = new google.maps.LatLng($scope.lat, $scope.lng);
 
         $scope.latlng = latlng;
         $scope.model.map.setCenter(latlng);
-    
-        $scope.startSpin();
+
+        $scope.startSpin(); // start loading spinner
         
+        // if bill exists - show markers
         if ($scope.currentBill){
             showAllMarkers($scope);
         }
     }
 
+    // show errors
     $scope.showError = function (error) {
         switch (error.code) {
             case error.PERMISSION_DENIED:
@@ -228,9 +246,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         }
         alert($scope.error);
         $scope.$apply();
-        
     }
 
+    // get current location
     $scope.getLocation = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
@@ -253,6 +271,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
     places = $scope.places; 
 
+    // Create marker from places array 
     for (var place in places){
           marker = new google.maps.Marker({
             map: $scope.model.map,
@@ -264,11 +283,12 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       $scope.myMarkers.push(marker);
 
       // Add current location - for the Poly route...
-      $scope.flightPlanCoordinates.push(marker.position);
+      $scope.polyLineCoordinates.push(marker.position);
     }
 
   }
 
+  // Generate geo marker
   var genGeoMarker = function(scope){
     $scope.currentMarker = new google.maps.Marker({
       map: $scope.model.map,
@@ -276,10 +296,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     });
   }
 
-  /* Generate a simple line between all the markers */
+  // Generate a simple line between every 2 markers
   var genPolyRoute = function(scope){
     var polyLine = new google.maps.Polyline({
-      path: $scope.flightPlanCoordinates,
+      path: $scope.polyLineCoordinates,
       geodesic: true,
       strokeColor: '#FF0000',
       strokeOpacity: 1.0,
@@ -291,7 +311,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $scope.line.push(polyLine);
   };
 
-  // Clear all
+  // Clear all map
   $scope.removeMarkers = function () {
         for (var i = 0; i < $scope.myMarkers.length; i++) {
             $scope.myMarkers[i].setMap(null);
@@ -301,69 +321,51 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         }
 
         $scope.myMarkers = [];
-        $scope.flightPlanCoordinates = [];
+        $scope.polyLineCoordinates = [];
         $scope.line = [];
   };
 
-  $scope.refreshMap = function () {
-    //optional param if you want to refresh you can pass null undefined or false or empty arg
-    $scope.model.map.setCenter({
-      lat : $scope.lat,
-      lng : $scope.lng
-    });
-
-    $scope.model.map.setZoom(11);
-
-    return;
-  };
-
+  // generate all markers
   $scope.genAllMarkers = function(){
     showAllMarkers($scope);
   };
 
+  // generate geo location marker
   $scope.genGeoMarker = function () {
     genGeoMarker($scope);
   };
 
-  $scope.clackMarker = function (gMarker,eventName, model) {
-    alert("clackMarker: " + model);
-    $log.log("from clackMarker");
-    $log.log(model);
-  };
-
+  // Get bills by id
   $scope.getUserBillsById = function(){
+    // if connected get bills by id
+    if ($scope.fbId){
+          // Get data from the server
+            $http.get('/map/getUserBills', {
+              params: { userFBId: $scope.fbId }
+            })
+            .success(function(data) {
+              $scope.bills = data;
+              $scope.numberOfBills = data.length;
 
-if ($scope.fbId){
-      // Get data from the server
-        $http.get('/map/getUserBills', {
-          params: { userFBId: $scope.fbId }
-        })
-        .success(function(data) {
-          $scope.bills = data;
-          $scope.numberOfBills = data.length;
+          }) // Error message..
+            .error(function(err){
+              console.log("getUserBillsById - Error: " + err);
+          });
+      };
+  }
 
-      }) //TODO: error handle..
-        .error(function(err){
-          console.log("getUserBillsById - Error: " + err);
-      });
-  };
-}
-
-    $scope.list = [];
-    $scope.text;
+  //search bill id with text box
   $scope.submitSearch = function(){
-
     $http.get('/map/getBillById', {
-        // 'billID':$scope.text
         params: { billID: $scope.text }
       })
        .success(function(data){  
 
-        $scope.text = '';
+        $scope.text = ''; // clear text box 
         if (data[0] != null){
             sharedVariables.setCurrentBill(data[0]);
-            $location.path("/map");
-            $route.reload();
+            $location.path("/map"); // redirect to map
+            $route.reload(); // refresh map 
         } 
         else {
             alert("Bill Not Found");
@@ -380,8 +382,12 @@ if ($scope.fbId){
 
   };
 
+  /** Submit checkIn button
+   * 1. connect to the server (if connected with fb profile)
+   * 2. submit new/existing bill
+   * 3. update relevant fields
+   **/
   $scope.submit = function() {
-
     if ($scope.fbId ){
       $http.post('/map/checkIn',{
         'name' : 'Yafim Vodkov',
@@ -394,21 +400,21 @@ if ($scope.fbId){
             $scope.currentBillID = $scope.text;
             $scope.currentBill = data[0];
 
-            $scope.places = data[0].places;
+            $scope.places = data[0].places; // locations
 
-            $scope.removeMarkers();
+            $scope.removeMarkers(); // clear map
             
-            genGeoMarker($scope);
+            genGeoMarker($scope); // create marker with current location
 
-            showAllMarkers($scope);
+            showAllMarkers($scope); // show all other markers
 
-
+            // show check in message
             var successCheckInMessage = "Checked In!" + "\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
             "(" + $scope.lat + " , " +  $scope.lng + ")";
 
             alert(successCheckInMessage);
 
-       })
+       }) 
        .error(function(err){
           alert("ErrorSubmit: " + err);
        });
@@ -458,19 +464,20 @@ if ($scope.fbId){
     }
   };
     
+  $scope.spinneractive = false;
+
+  //Define some listeners
+  
+  $rootScope.$on('us-spinner:spin', function(event, key) {
+    $scope.spinneractive = true;
+  });
+
+  $rootScope.$on('us-spinner:stop', function(event, key) {
     $scope.spinneractive = false;
+  });
 
-
-    $rootScope.$on('us-spinner:spin', function(event, key) {
-      $scope.spinneractive = true;
-    });
-
-    $rootScope.$on('us-spinner:stop', function(event, key) {
-      $scope.spinneractive = false;
-    });
-
-    $rootScope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-      $scope.stopSpin();
-    });
+  $rootScope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    $scope.stopSpin();
+  });
 
 });
