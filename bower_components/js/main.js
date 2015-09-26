@@ -164,6 +164,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $scope.logged = ($scope.fbId) ? "Logged" : null;
         
     // Useful variables
+    $scope.onlyNumbers = /^\d+$/;
     $scope.line = [];
     $scope.currentBillID;
     $scope.lat = "0";

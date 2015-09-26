@@ -37,25 +37,24 @@
         </ul>
 
       <!-- Submit button -->
+                      Enter Bill ID and hit enter:
     <form name="submitForm" ng-submit="submit()">
-        Enter Bill ID and hit enter:
+
+
+
+<div style="overflow: hidden; padding-right: .5em;">
+
         <!-- <input type="text" ng-model="text" name="text" ng-minlength="10" ng-maxlength="10" required /> -->
-        <input type="text" name="text" ng-model="text" placeholder="Bill Id" ng-minlength="10" ng-maxlength="10" required />
+        <input type="text" name="text" ng-model="text" placeholder="Bill Id" ng-minlength="10" ng-maxlength="10" required ng-pattern="onlyNumbers" style="float: left" />
 
-        <div role="alert" class="alert alert-danger">
-                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>
+        <input ng-disabled="submitForm.$invalid" type="submit" id="submit" value="Check-In"  />
 
-            <span ng-show="submitForm.text.$error.required">
-            Required!</span>
-            <span ng-show="submitForm.text.$error.minlength">Bill Id should be exactly 10 chars length</span>
-            <span ng-show="submitForm.text.$error.maxlength">To long</span>
-
-
-
+</div>
+        <div role="alert">
+            <span ng-show="submitForm.text.$error.minlength || submitForm.text.$error.maxlength || submitForm.text.$error.pattern" style="color:red"><b>Bill Id should be exactly 10 digit length</b></span>
+                
         </div>
 
-        <input ng-disabled="submitForm.$invalid" type="submit" id="submit" value="Check-In" />
     </form>
 
       </div>
