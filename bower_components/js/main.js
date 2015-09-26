@@ -378,7 +378,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
     if ($scope.fbId ){
       $http.post('/map/checkIn',{
-        'name' : 'tempName',
+        'name' : 'Yafim Vodkov',
         'fbID' : $scope.fbId,
         'billID':$scope.text,
         'lat': $scope.lat,
