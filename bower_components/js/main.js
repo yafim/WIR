@@ -375,7 +375,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
   $scope.submit = function() {
 
-    if ($scope.fbId){
+    if ($scope.fbId ){
       $http.post('/map/checkIn',{
         'name' : 'tempName',
         'fbID' : $scope.fbId,

@@ -37,11 +37,26 @@
         </ul>
 
       <!-- Submit button -->
-      <form ng-submit="submit()">
+    <form name="submitForm" ng-submit="submit()">
         Enter Bill ID and hit enter:
-        <input type="text" ng-model="text" name="text" />
-        <input type="submit" id="submit" value="Check-In" />
-      </form>
+        <!-- <input type="text" ng-model="text" name="text" ng-minlength="10" ng-maxlength="10" required /> -->
+        <input type="text" name="text" ng-model="text" placeholder="Bill Id" ng-minlength="10" ng-maxlength="10" required />
+
+        <div role="alert" class="alert alert-danger">
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+
+            <span ng-show="submitForm.text.$error.required">
+            Required!</span>
+            <span ng-show="submitForm.text.$error.minlength">Bill Id should be exactly 10 chars length</span>
+            <span ng-show="submitForm.text.$error.maxlength">To long</span>
+
+
+
+        </div>
+
+        <input ng-disabled="submitForm.$invalid" type="submit" id="submit" value="Check-In" />
+    </form>
 
       </div>
         </div>
