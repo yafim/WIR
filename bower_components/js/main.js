@@ -226,6 +226,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         if ($scope.currentBill){
             showAllMarkers($scope);
         }
+        
     }
 
     // show errors
@@ -441,7 +442,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
     showAllMarkers($scope);
     genPolyRoute($scope);
-    // alert(id);
+    // alert("id");
 
   };
     
@@ -467,7 +468,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   $scope.spinneractive = false;
 
   //Define some listeners
-  
+
   $rootScope.$on('us-spinner:spin', function(event, key) {
     $scope.spinneractive = true;
   });
