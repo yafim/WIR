@@ -13,7 +13,7 @@ html {
 }
 
 body {
-margin: 0 0 100px; /* bottom = footer height */
+margin: 0 0 0px; /* bottom = footer height */
 }
 
 /* Footer Styles */
@@ -467,3 +467,75 @@ margin: 0 0 100px; /* bottom = footer height */
     background-color: #fff;
     border-color: #fff;
 }
+
+/*button*/
+*, :before, :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+body {
+    padding: 1em;
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #eee;
+}
+h1 {
+    font: 200 2em/1em'Open Sans', sans-serif;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: dashed 2px rgba(0, 0, 0, 0.3);
+}
+.button, [class*="button-"] {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    float: center;
+    margin: 0 1em 1em 0;
+    padding: 0 4em;
+    height: 3.5em;
+    font: 300 1em/3.5em'Open Sans', sans-serif;
+    text-decoration: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    letter-spacing: .08em;
+    color: #fff;
+    background: #2795ee;
+    border: solid 1px #fff;
+    border-radius: 2px;
+    -webkit-transition: 0.35s ease all;
+    -moz-transition: 0.35s ease all;
+    -o-transition: 0.35s ease all;
+    transition: 0.35s ease all;
+}
+.button:hover, [class*="button-"]:hover {
+    background: #007DA7;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) inset;
+}
+.button-hover:hover {
+    line-height: 9em;
+
+}
+.button-hover:before {
+    content: attr(data-text);
+    color: #DEEFF5;
+    position: absolute;
+    top: -2.75em;
+
+}
+.red { background-color: #C63C41; }
+.green { background-color: #6abd45; }
+.black { background-color: #262626; }
+.gray { background-color: #535b61; }
+.blue { background-color: #2795ee; }
+.info { background-color: #EEA667; }
+.pink { background-color: #EB9F9F; }
+.light-green { background-color: #448259 ; }
+
+.red:hover { background-color: #F61E37; }
+.green:hover { background-color: #829D36; }
+.black:hover { background-color: #36393b; }
+.gray:hover { background-color: #858D96; }
+.blue:hover { background-color: #007DA7; }
+.info:hover { background-color: #D8965D; }
+.pink:hover { background-color: #F1BBBA; }
+.light-green:hover { background-color: #67AF7D; }
