@@ -7,13 +7,9 @@ For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap
 
 /* Global Styles */
 
-html {
-    position: relative;
-    min-height: 100%;
-}
 
-body {
-margin: 0 0 0px; /* bottom = footer height */
+html, body {
+    height: 100%;
 }
 
 /* Footer Styles */
@@ -202,15 +198,14 @@ margin: 0 0 0px; /* bottom = footer height */
     background-color: #2E2E2E;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
     /*box-sizing: border-box;*/
-    /*width: 100%;*/
     text-align: left;
     font: normal 16px sans-serif;
 
-    padding: 0px 33px 0px 33px;
+    /*padding: 0px 33px 0px 33px;*/
 
-        position: absolute;
-    left: 0;
-    bottom: 0;
+        /*position: absolute;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
     width: 100%;
 }
     
@@ -539,3 +534,18 @@ h1 {
 .info:hover { background-color: #D8965D; }
 .pink:hover { background-color: #F1BBBA; }
 .light-green:hover { background-color: #67AF7D; }
+
+
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.footer-distributed, .page-wrap:after {
+  height: 142px; 
+}
