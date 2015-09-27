@@ -191,9 +191,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $scope.polyLineCoordinates = []; // poly line coordinates 
     $scope.currentMarker;
 
-    // textbox
-    $scope.list = [];
-    $scope.text;
+
 
     // GoogleMap options
     $scope.mapOptions = {
@@ -382,7 +380,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
 
   };
-
+    // textbox
+    $scope.list = [];
+    $scope.text;
   /** Submit checkIn button
    * 1. connect to the server (if connected with fb profile)
    * 2. submit new/existing bill
