@@ -201,11 +201,10 @@ html, body {
     text-align: left;
     font: normal 16px sans-serif;
 
-    /*padding: 0px 33px 0px 33px;*/
 
-        /*position: absolute;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
+        position: absolute;
+    left: 0;
+
     width: 100%;
 }
     
