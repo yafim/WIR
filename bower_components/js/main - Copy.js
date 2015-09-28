@@ -32,7 +32,6 @@ app.config(['$routeProvider', function ($routeProvider) {
       .when("/profile", {templateUrl: path + "profile.html", controller: "PageCtrl", needAuth: true})
     .when("/about", {templateUrl: path + "about.html", controller: "PageCtrl"})
     .when("/faq", {templateUrl: path + "faq.html", controller: "PageCtrl"})
-    .when("/pricing", {templateUrl: path + "pricing.html", controller: "PageCtrl"})
     .when("/services", {templateUrl: path + "services.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: path + "contact.html", controller: "PageCtrl"})
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})

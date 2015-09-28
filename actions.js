@@ -4,10 +4,8 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 var router = express.Router();
-var isExists;
 
 // DB settings
-
 var assert = require('assert');
 var url = 'mongodb://rachel:wir123@ds035563.mongolab.com:35563/rachel';
 

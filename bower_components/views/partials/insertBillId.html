@@ -17,7 +17,7 @@
     <div class="row">
 
         <div class="col-sm-8">
-        <h1>Please Insert Bill ID</h1>
+        <h1>Please Insert your Bill ID</h1>
 
           <ul>
             <li ng-repeat="bill in bills">{{bill.billId}} : {{bill.billMarkers}}</li>
@@ -33,7 +33,7 @@
 
       <!-- Submit button -->
       <form ng-submit="submit()">
-        Enter Bill ID and hit enter:
+        Enter Bill ID and hit Enter:
         <input type="text" ng-model="text" name="text" />
         <input type="submit" id="submit" value="Check-In" />
       </form>
