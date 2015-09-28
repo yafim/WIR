@@ -344,6 +344,14 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     genGeoMarker($scope);
   };
 
+  $scope.isLogged = function(){
+    // alert("1");
+    if (!$scope.fbId){
+      alert("You are not logged in!");
+      $location.url('/');
+    }
+  }
+
   // Get bills by id
   $scope.getUserBillsById = function(){
     // if connected get bills by id
@@ -454,6 +462,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     genPolyRoute($scope);
 
   };
+
+
     
   $scope.initMap = function(){
       $scope.currentBill = sharedVariables.getCurrentBill();
@@ -468,11 +478,13 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     }
   };
 
-    $scope.stopSpin = function() {
+  $scope.stopSpin = function() {
     if ($scope.spinneractive) {
       usSpinnerService.stop('spinner-1');
     }
   };
+
+
     
   $scope.spinneractive = false;
 
