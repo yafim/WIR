@@ -5,7 +5,7 @@
 
         <div class="col-lg-12">
             <h1 class="page-header">My Bills
-                <small>Track all your bills</small>
+                <small>Track all of your bills</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/">Home</a></li>
@@ -19,12 +19,12 @@
 
 
         <div class="col-sm-8" >
-        <h1>Click for locations </h1>
+        <h1>Click to see your locations </h1>
         FaceBook id : {{fbId}}
 
         <!-- <select ng-model="bills" ng-change="showMarkerById(bills, bill.billID)" ng-options="bill in bills"> -->
         <select ng-model="selectBill" ng-change="showMarkerById(bills)" >
-            <option value="">---Please select---</option>
+            <option value="">---Select your bill ID---</option>
             <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished">{{bill.billID}}</option>
         </select>
 
