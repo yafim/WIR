@@ -25,7 +25,6 @@ router.get('/map/getUserBills', function(req, res){
 		assert.equal(null, err);
 		findBills(db, id, function(docs) {
 			db.close();
-			console.dir(docs);
 			res.json(docs);
 		});
 	});
