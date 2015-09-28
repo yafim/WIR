@@ -417,6 +417,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             showAllMarkers($scope); // show all other markers
 
+            genPolyRoute($scope);
+
             // show check in message
             var successCheckInMessage = "Checked In!" + "\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
             "(" + $scope.lat + " , " +  $scope.lng + ")";
