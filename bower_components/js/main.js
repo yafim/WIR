@@ -270,7 +270,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     //Useful variables
     var marker;
     var places;
-    var data;
+
 
     places = $scope.places; 
 
@@ -315,17 +315,17 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   };
 
   // Clear all map
-  $scope.removeMarkers = function () {
-        for (var i = 0; i < $scope.myMarkers.length; i++) {
-            $scope.myMarkers[i].setMap(null);
-            if (i < $scope.line.length){
-            $scope.line[i].setMap(null);
-          }
-        }
+  $scope.removeMarkers = function () {    
+    for (var i = 0; i < $scope.myMarkers.length; i++) {
+        $scope.myMarkers[i].setMap(null);
+        if (i < $scope.line.length){
+        $scope.line[i].setMap(null);
+      }
+    }
 
-        $scope.myMarkers = [];
-        $scope.polyLineCoordinates = [];
-        $scope.line = [];
+    $scope.myMarkers = [];
+    $scope.polyLineCoordinates = [];
+    $scope.line = [];
   };
 
   // generate all markers
@@ -372,7 +372,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         } 
         else {
             alert("Bill Not Found");
-            $scope.removeMarkers();
+            $scope.removeMarkers();            
         }
         
 
@@ -444,7 +444,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
     showAllMarkers($scope);
     genPolyRoute($scope);
-    // alert("id");
 
   };
     
