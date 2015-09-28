@@ -53,6 +53,7 @@ app.config(['$routeProvider', function ($routeProvider) {
  */
 app.service('sharedVariables', function () {
     var property = '';
+    var fbname ='';
     var currentBill;
 
         return {
@@ -67,7 +68,15 @@ app.service('sharedVariables', function () {
             },
             setProperty: function(value) {
                 property = value;
+            },
+            getfbname: function (){
+                return fbname;
+            },
+            setfbname: function(value){
+                fbname = value;
             }
+
+
         };
 });
 
@@ -104,10 +113,14 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, share
   })
 
     $rootScope.$on('fbLoginSuccess', function(name, response) {
+       // alert(JSON.stringify(response));
         if(response.status == 'connected'){
+
+
             //   $location.url('/'); // I wish to redirect to home page after successful login.
                 $rootScope.loggedInUser = response;
                 sharedVariables.setProperty(response['authResponse']['userID']);
+                sharedVariables.setfbname(response.name);
                 $route.reload();
 
         }
@@ -173,7 +186,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     
     // FaceBook id
     $scope.fbId = sharedVariables.getProperty();
-
+    $scope.fbname = sharedVariables.getfbname();
     // alert($scope.fbId);
     
     // $scope.logged = ($scope.fbId) ? "Logged" : null;
