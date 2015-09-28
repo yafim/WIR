@@ -568,9 +568,9 @@ body {
 
 header {
     position: relative;
-    background-color: #3f51b5;
+
     height: 150px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+
 }
 
 .add-button {
