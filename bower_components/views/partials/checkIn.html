@@ -1,13 +1,13 @@
 <div class="container" ng-init="getDataFromServer()">
     <div class="row">
-        <div class="col-sm-8 h1-top">
-            <h1>Please Insert your Bill ID</h1>
+        <div class="col-sm-12 h1-top">
+            <h1>Please Insert your Bill ID <br>
+                <small>Enter your bill's 10 digits ID and press Check-In </small>
+            </h1>
             
             <!-- Submit button -->
-            Enter your bill's 10 digits ID and press Check-In:
             <form name="submitForm" ng-submit="submit()">
                 <div style="overflow: hidden; padding-right: .5em;">
-                                    <!-- <input type="text" ng-model="text" name="text" ng-minlength="10" ng-maxlength="10" required /> -->
                     <input type="text" name="text" ng-model="text" placeholder="Bill Id" ng-minlength="10" ng-maxlength="10" required ng-pattern="onlyNumbers" style="float: left" />
 
                     <input ng-disabled="submitForm.$invalid" type="submit" id="submit" value="Check-In"  />
@@ -26,5 +26,5 @@
     <div class="row">
         <div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
     </div>
-    
+
 </div><!-- /.container

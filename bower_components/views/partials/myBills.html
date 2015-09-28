@@ -1,51 +1,30 @@
-  <!-- Page Content -->
-
-    <div class="container" ng-init='isLogged(); getUserBillsById()' >
+<div class="container" ng-init='isLogged(); getUserBillsById()' >
     <div class="row">
 
-        <div class="col-lg-12">
-            <h1 class="page-header">My Bills
+        <div class="col-sm-12 h1-top">
+            <h1>My Bills <br>
                 <small>Track all of your bills</small>
             </h1>
+        
+
+        <!-- loading spinner -->
+        <div ng-if="spinneractive">
+                    <ng-init="startSpin()" us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" />
         </div>
 
-    <div class="row">
+        <!-- select bar for bill id-->
+        <!-- <div class="col-sm-8"> -->
+            <h2>Click to see your locations </h2>
+            FaceBook id : {{fbId}}
+            <select ng-model="selectBill" ng-change="showMarkerById(bills)" >
+                <option value="">---Select your bill ID---</option>
+                <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished">{{bill.billID}}</option>
+            </select>
 
-        <!-- TEST... to delete -->
-        <!-- <input type="button" ng-click="startSpin()" value="Start spinner" /> -->
-        <!-- <input type="button" ng-click="stopSpin()" value="Stop spinner" />  -->
-<!-- END OF TEST -->
-<div ng-if="spinneractive">
-
-
-<!-- Loading... -->
-
-            <!-- <span ng-init="startSpin()" us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" spinner-key="spinner-1"></span> -->
-            <ng-init="startSpin()" us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" />
-
-      <!--       <img id="mySpinner" src="http://images.clipartpanda.com/s-clip-art-letter-s-hi.png" ng-show="spinneractive" /> -->
-
-</div>
-
-        <div class="col-sm-8">
-        <h1>Click to see your locations </h1>
-        FaceBook id : {{fbId}}
-
-        <!-- <select ng-model="bills" ng-change="showMarkerById(bills, bill.billID)" ng-options="bill in bills"> -->
-        <select ng-model="selectBill" ng-change="showMarkerById(bills)" >
-            <option value="">---Select your bill ID---</option>
-            <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished">{{bill.billID}}</option>
-        </select>
-
-
-      </div>
+    
+        <div class="row">
+          <div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
         </div>
-    </div>
-    <!-- /.row -->
-   <div class="row">
 
-      <div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
-
-    </div>
-
+    </div> <!-- row -->
 </div><!-- /.container
