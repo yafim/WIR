@@ -89,7 +89,7 @@ app.filter('getById', function() {
  * Controls all other Pages
  */
 
-app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, sharedVariables) {
+app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, sharedVariables, $route) {
   // Activates the Carousel - image changer
   $('.carousel').carousel({
     interval: 5000
@@ -108,6 +108,7 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, share
             //   $location.url('/'); // I wish to redirect to home page after successful login.
                 $rootScope.loggedInUser = response;
                 sharedVariables.setProperty(response['authResponse']['userID']);
+                $route.reload();
 
         }
     });
