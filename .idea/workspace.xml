@@ -2,17 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9eaadf8-bd20-42cc-987b-b61815a3ac18" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/channel.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/demo/demoApp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/src/facebookUtils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/src/facebookUtils.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/demo/partials/main.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/demo/partials/private.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/actions - Copy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/index - Copy.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/main - Copy-last.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/main - Copy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/404.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/about.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/blog.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/blog_item.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/checkIn.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/contact.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/faq.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/home.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/insertBillId.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/map.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/map1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/pricing.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/partials-copy/services.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/style_D/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/404.ejs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/about.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/angExample.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/checkIn.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/example - Copy.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/example.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/insertBillId.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/map.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/folderToDelete/tempHtml/mapDelete.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/partials/home - Copy.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/partials/map1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/partials/pricing.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/views/partials/services.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/router/main.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bower_components/views/partials/about.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/partners.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/js/main - Copy.js" afterPath="$PROJECT_DIR$/bower_components/js/main - Copy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/js/main.js" afterPath="$PROJECT_DIR$/bower_components/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="67f46385-5976-4d32-a176-4e745eca3ccd" name="facebook login" comment="" />
@@ -39,23 +64,51 @@
         <entry file="file://$PROJECT_DIR$/bower_components/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+              <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower_components/views/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.25">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1443439368000" expanded="true" signature="1113:1266" placeholder="..." />
+                <marker date="1443439368000" expanded="true" signature="1206:1234" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bower_components/views/index.html">
+      <file leaf-file-name="help.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bower_components/views/partials/help.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24157304">
-              <caret line="52" column="83" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
-              <folding>
-                <marker date="1442316467000" expanded="true" signature="1109:1262" placeholder="..." />
-                <marker date="1442316467000" expanded="true" signature="1202:1230" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.65891474">
+              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="partners.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower_components/views/partials/partners.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.5">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkIn.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower_components/views/partials/checkIn.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.625">
+              <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -70,7 +123,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="main - Copy.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower_components/js/main - Copy.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Html5" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,8 +148,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bower_components/js/main.js" />
         <option value="$PROJECT_DIR$/bower_components/views/index.html" />
+        <option value="$PROJECT_DIR$/bower_components/views/partials/checkIn.html" />
+        <option value="$PROJECT_DIR$/bower_components/views/partials/help.html" />
+        <option value="$PROJECT_DIR$/bower_components/js/main.js" />
+        <option value="$PROJECT_DIR$/bower_components/views/folderToDelete/main - Copy.js" />
+        <option value="$PROJECT_DIR$/bower_components/js/main - Copy.js" />
+        <option value="$PROJECT_DIR$/bower_components/views/folderToDelete/main - Copy-last.js" />
       </list>
     </option>
   </component>
@@ -93,7 +168,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="726" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -169,6 +244,28 @@
               <option name="myItemId" value="bower_components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wir" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whereisrachel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -180,9 +277,10 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RunManager" selected="Node.js.app.js">
-    <configuration default="false" name="app.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
+    <configuration default="false" name="app.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="/usr/local/bin/node" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -274,7 +372,19 @@
       <option name="project" value="LOCAL" />
       <updated>1442316493285</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added help.html and edited content on checkIn.html">
+      <created>1443458698734</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1443458698734</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added link to FB">
+      <created>1443459259463</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1443459259463</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -287,27 +397,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="726" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -326,7 +436,9 @@
     <MESSAGE value="facebook login changed from facebookutils.min.js to  facebookutils.js" />
     <MESSAGE value="bower_components added to link" />
     <MESSAGE value="moved to the end&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved to the end&#10;" />
+    <MESSAGE value="Added help.html and edited content on checkIn.html" />
+    <MESSAGE value="Added link to FB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added link to FB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -336,20 +448,35 @@
     <entry file="file://$PROJECT_DIR$/bower_components/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1443439368000" expanded="true" signature="1113:1266" placeholder="..." />
+            <marker date="1443439368000" expanded="true" signature="1206:1234" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/angular-facebook-utils/src/facebookUtils.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -363,12 +490,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24157304">
-          <caret line="52" column="83" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <marker date="1442316467000" expanded="true" signature="1109:1262" placeholder="..." />
-            <marker date="1442316467000" expanded="true" signature="1202:1230" placeholder="..." />
+            <marker date="1443439368000" expanded="true" signature="1113:1266" placeholder="..." />
+            <marker date="1443439368000" expanded="true" signature="1206:1234" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/views/partials/checkIn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.625">
+          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/views/partials/partners.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/js/main - Copy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/views/partials/help.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65891474">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
