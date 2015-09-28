@@ -553,10 +553,3 @@ h1 {
 .footer-distributed, .page-wrap:after {
   height: 90px; 
 }
-
-.page-wrap-background{
-    padding:25px;
-    background-image: url("http://unsplash.s3.amazonaws.com/batch%209/barcelona-boardwalk.jpg");
-    background-origin:border-box;
-    background-repeat: round;"
-}

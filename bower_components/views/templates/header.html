@@ -21,31 +21,41 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse" ng-class="isCollapsed ? 'collapse' : 'in'" id="searchbar">
-            
             <ul class="nav navbar-nav navbar-right">
                 <!-- <li><a href="#/map">Map</a></li> -->
-                <li><a href="#/profile">Profile</a></li>
-                <li><a href="#/myBills">My Bills</a></li>
-                <li><a href="#/checkIn">Check In</a></li>
+                <li class="dropdown nav navbar-nav navbar-right">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Profile<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/profile">My user</a></li>
+                        <li><a href="#/myBills">My bills</a></li>
+                        <li><a href="#/checkIn">Check In</a></li>
+                    <span ng-show=connectedToFB>    <li style="left: 9px;">   <facebook-login-button >Please sign in</facebook-login-button></li></span>
+
+                    </ul>
+                </li>
+
+                <!--<li><a href="#/profile">Profile</a></li>-->
+                <!--<li><a href="#/myBills">My Bills</a></li>-->
+                <!--<li><a href="#/checkIn">Check In</a></li>-->
                 <li><a href="#/about">About</a></li>
                 <li><a  href="#/faq">FAQ</a></li>
                 <li><a  href="#/contact">Contact</a></li>
 
-                <a class="navbar-brand">  <facebook-login-button>Please sign in</facebook-login-button></a>
+
+                <!--<a class="navbar-brand">  <facebook-login-button>Please sign in</facebook-login-button></a>-->
 
             </ul>
-                
 
 
-        <!-- Search form -->
-         <form class="navbar-form" ng-submit="submitSearch()" ng-controller="MapController" ng-init="focus=false;blur=false;active=false">
-            <div class="form-group" style="display:inline;">
-              <div class="input-group" style="display:table;">
-                <span class="input-group-addon" ><span class="glyphicon glyphicon-search"></span></span>
-                <input class="form-control" name="search" placeholder="Search Bill" autocomplete="off" focus="false" type="text" ng-model="text">
-              </div>
-            </div>
-          </form>
+            <!-- Search form -->
+            <form class="navbar-form" ng-submit="submitSearch()" ng-controller="MapController" ng-init="focus=false;blur=false;active=false">
+                <div class="form-group" style="display:inline;">
+                    <div class="input-group" style="display:table;">
+                        <span class="input-group-addon" ><span class="glyphicon glyphicon-search"></span></span>
+                        <input class="form-control" name="search" placeholder="Search Bill" autocomplete="off" focus="false" type="text" ng-model="text">
+                    </div>
+                </div>
+            </form>
 
 
         </div>
