@@ -179,6 +179,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     // $scope.logged = ($scope.fbId) ? "Logged" : null;
         
     // Useful variables
+
+    // $scope.spinneractive = false;
+
     $scope.onlyNumbers = /^\d+$/; // validate input 
     $scope.currentBillID; // current billId
 
@@ -229,7 +232,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
         $scope.latlng = latlng;
         $scope.model.map.setCenter(latlng);
 
-        $scope.startSpin(); // start loading spinner
+        // $scope.startSpin(); // start loading spinner
         
         // if bill exists - show markers
         if ($scope.currentBill){
@@ -348,13 +351,13 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   $scope.isLogged = function(){
     // alert("1");
     if (!$scope.fbId){
-      alert("You are not logged in!");
       $location.url('/');
     }
   }
 
   // Get bills by id
   $scope.getUserBillsById = function(){
+
     // if connected get bills by id
     if ($scope.fbId){
           // Get data from the server
@@ -455,6 +458,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   };
 
   $scope.showMarkerById = function(arr){
+    // $scope.startSpin();
+
     $scope.searchById(arr, $scope.selectBill);
     $scope.places = $scope.selected.places;
     $scope.removeMarkers();
@@ -475,7 +480,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $scope.startSpin = function() {
     if (!$scope.spinneractive) {
       usSpinnerService.spin('spinner-1');
-      $scope.startcounter++;
+      // $scope.startcounter++;
     }
   };
 
@@ -487,7 +492,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
 
     
-  $scope.spinneractive = false;
+  $scope.spinneractive = true;
 
   //Define some listeners
 

@@ -15,10 +15,23 @@
 
     <div class="row">
 
-            <span us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" spinner-key="spinner-1"></span>
+        <!-- TEST... to delete -->
+        <!-- <input type="button" ng-click="startSpin()" value="Start spinner" /> -->
+        <!-- <input type="button" ng-click="stopSpin()" value="Stop spinner" />  -->
+<!-- END OF TEST -->
+<div ng-if="spinneractive">
 
 
-        <div class="col-sm-8" >
+<!-- Loading... -->
+
+            <!-- <span ng-init="startSpin()" us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" spinner-key="spinner-1"></span> -->
+            <ng-init="startSpin()" us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" />
+
+      <!--       <img id="mySpinner" src="http://images.clipartpanda.com/s-clip-art-letter-s-hi.png" ng-show="spinneractive" /> -->
+
+</div>
+
+        <div class="col-sm-8">
         <h1>Click to see your locations </h1>
         FaceBook id : {{fbId}}
 
@@ -27,6 +40,7 @@
             <option value="">---Select your bill ID---</option>
             <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished">{{bill.billID}}</option>
         </select>
+
 
       </div>
         </div>
