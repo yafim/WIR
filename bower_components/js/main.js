@@ -5,6 +5,8 @@ var app = angular.module('pageHolder', [
   'angularSpinner'
 ])
 
+
+
     .directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',
@@ -32,7 +34,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 
   $routeProvider
     // Home
-    .when("/", {templateUrl: path + "home.html", controller: "PageCtrl"})
+      .when("/", {templateUrl: path + "home.html", controller: "PageCtrl"})
+
     // Pages
       .when("/profile", {templateUrl: path + "profile.html", controller: "PageCtrl", needAuth: true})
     .when("/about", {templateUrl: path + "about.html", controller: "PageCtrl"})
@@ -41,7 +44,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
     .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController", needAuth: true})
     .when("/myBills", {templateUrl: path + "myBills.html", controller: "MapController", needAuth: true})
-    .otherwise("/404", {templateUrl: path + "404.html", controller: "PageCtrl"});
+    .otherwise("/", {templateUrl: path + "404.html", controller: "PageCtrl"});
 }]);
 
 
@@ -92,10 +95,12 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, share
     interval: 5000
   });
 
+
+
   // Activates Tooltips for Social Links 
   //http://www.w3schools.com/bootstrap/bootstrap_tooltip.asp
   $('.tooltip-social').tooltip({
-    selector: "a[data-toggle=tooltip]"
+    selector: "a[oltip-sggle=tooltip]"
   })
 
     $rootScope.$on('fbLoginSuccess', function(name, response) {
@@ -106,6 +111,7 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, share
 
         }
     });
+
 
     $rootScope.$on('fbLogoutSuccess', function() {
         $scope.$apply(function() {
