@@ -33,7 +33,7 @@ app.directive('draggable', function($document) {
 
 
     });
-    element.on('mousedown', function(event) {
+    element.on('touchstart', function(event) {
       // Prevent default dragging of selected content
       event.preventDefault();
       startX = event.screenX - x;
