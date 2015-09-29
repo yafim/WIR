@@ -1,0 +1,30 @@
+<div class="container" ng-init="getDataFromServer()">
+    <div class="row">
+        <div class="col-sm-12 h1-top">
+            <h1>Please Insert your Bill ID <br>
+                <small>Enter your bill's 10 digits ID and press Check-In </small>
+            </h1>
+            
+            <!-- Submit button -->
+            <form name="submitForm" ng-submit="submit()">
+                <div style="overflow: hidden; padding-right: .5em;">
+                    <input type="text" name="text" ng-model="text" placeholder="Bill Id" ng-minlength="10" ng-maxlength="10" required ng-pattern="onlyNumbers" style="float: left" />
+
+                    <input ng-disabled="submitForm.$invalid" type="submit" id="submit" value="Check-In"  />
+                </div>
+
+                <!-- error message for bad id -->
+                <div role="alert">
+                    <span ng-show="submitForm.text.$error.minlength || submitForm.text.$error.maxlength || submitForm.text.$error.pattern" style="color:red"><b>Bill Id should be exactly 10 digit length</b></span>
+                </div>
+
+            </form>
+
+        </div>
+    </div> <!-- /.row -->
+            
+    <div class="row">
+        <div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
+    </div>
+
+</div><!-- /.container
