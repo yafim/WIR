@@ -32,7 +32,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 
   $routeProvider
     // Home
-      .when("/", {templateUrl: path + "home.html", controller: "PageCtrl"})
+      .when("/", {templateUrl: path + "main.html", controller: "PageCtrl"})
 
     // Pages
       .when("/profile", {templateUrl: path + "profile.html", controller: "PageCtrl", needAuth: true})
@@ -120,15 +120,11 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, share
                 sharedVariables.setProperty(response['authResponse']['userID']);
 
                 var accessToken = response['authResponse']['accessToken'];
-                // alert(accessToken);
-// console.log("https://graph.facebook.com/" + response['authResponse']['userID'] + "?access_token=" + accessToken);
-// console.log('https://graph.facebook.com/' + response['authResponse']['userID'] + '?access_token='+ accessToken);
-                // $http.get('https://graph.facebook.com/' + response['authResponse']['userID'] + '?access_token='+ accessToken).success(function(data) {
 
                 $http.get('https://graph.facebook.com/' + response['authResponse']['userID'] + '?fields=name,first_name,last_name&access_token='+ accessToken).success(function(data) {
 
                 // alert(JSON.stringify(data));
-                // get name of the user
+                // get facebook object
                 sharedVariables.setFbData(data);
 
                 }).error(function(data, status, headers, config) {
