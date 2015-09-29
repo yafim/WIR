@@ -20,16 +20,16 @@ var app = angular.module('pageHolder', [
 
 app.directive('draggable', function($document) {
   return function(scope, element, attr) {
-    var startX = 0, startY = 0, x = 780, y = -465;
+    var startX = 0, startY = 0, x = 0, y = 0;
     element.css({
      position: 'relative',
      // border: '1px solid red',
      // backgroundColor: 'rgb(253, 59, 115)',
      // cursor: 'pointer',
      // display: 'block',
-     // width: '65px',
-     left:'780px',
-     top: '-465px'
+     // // width: '65px',
+     // left:'780px',
+     // top: '-465px'
 
 
     });
