@@ -5,8 +5,6 @@ var app = angular.module('pageHolder', [
   'angularSpinner'
 ])
 
-
-
     .directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',
@@ -53,7 +51,7 @@ app.config(['$routeProvider', function ($routeProvider) {
  */
 app.service('sharedVariables', function () {
     var property = '';
-    var fbname ='';
+    var fbData ='';
     var currentBill;
 
         return {
@@ -69,11 +67,11 @@ app.service('sharedVariables', function () {
             setProperty: function(value) {
                 property = value;
             },
-            getfbname: function (){
-                return fbname;
+            getFbData: function (){
+                return fbData;
             },
-            setfbname: function(value){
-                fbname = value;
+            setFbData: function(value){
+                fbData = value;
             }
 
 
@@ -120,7 +118,24 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, share
             //   $location.url('/'); // I wish to redirect to home page after successful login.
                 $rootScope.loggedInUser = response;
                 sharedVariables.setProperty(response['authResponse']['userID']);
-                sharedVariables.setfbname(response.name);
+
+                var accessToken = response['authResponse']['accessToken'];
+                // alert(accessToken);
+// console.log("https://graph.facebook.com/" + response['authResponse']['userID'] + "?access_token=" + accessToken);
+// console.log('https://graph.facebook.com/' + response['authResponse']['userID'] + '?access_token='+ accessToken);
+                // $http.get('https://graph.facebook.com/' + response['authResponse']['userID'] + '?access_token='+ accessToken).success(function(data) {
+
+                $http.get('https://graph.facebook.com/' + response['authResponse']['userID'] + '?fields=name,first_name,last_name&access_token='+ accessToken).success(function(data) {
+
+                // alert(JSON.stringify(data));
+                // get name of the user
+                sharedVariables.setFbData(data);
+
+                }).error(function(data, status, headers, config) {
+                        alert("problem during request to facebook");
+                });
+
+                
                 $route.reload();
 
         }
@@ -186,8 +201,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     
     // FaceBook id
     $scope.fbId = sharedVariables.getProperty();
-    $scope.fbname = sharedVariables.getfbname();
-    // alert($scope.fbId);
+    $scope.fbData = sharedVariables.getFbData();
     
     // $scope.logged = ($scope.fbId) ? "Logged" : null;
         
@@ -424,7 +438,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   $scope.submit = function() {
     if ($scope.fbId ){
       $http.post('/map/checkIn',{
-        'name' : 'Yafim Vodkov',
+        'name' : $scope.fbData.name,
         'fbID' : $scope.fbId,
         'billID':$scope.text,
         'lat': $scope.lat,

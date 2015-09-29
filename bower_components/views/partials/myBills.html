@@ -14,8 +14,9 @@
 
         <!-- select bar for bill id-->
         <!-- <div class="col-sm-8"> -->
-            <h2>Click to see your locations </h2>
-            FaceBook id : {{fbId}}
+            <h2>Hi {{fbData.first_name}}! Click to see your locations </h2>
+            <!-- FaceBook id : {{fbId}}
+            Facebook name :  -->
             <select ng-model="selectBill" ng-change="showMarkerById(bills)" >
                 <option value="">---Select your bill ID---</option>
                 <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished">{{bill.billID}}</option>
