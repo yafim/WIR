@@ -782,8 +782,13 @@ header {
 
 .dropdown-menu{
         background-color: #363636;
-    text-align: center;
+    /*text-align: center;*/
 }
    .dropdown-menu li>a{color:white; }
-   .dropdown-menu>li{padding:5px; }
-   .dropdown-menu li>a:hover{background:#FAC564; }
+   /*.dropdown-menu>li{padding:5px; }*/
+   .dropdown-menu li>a:hover{color:white; background:#2D2D2D; }
+
+   .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+    color: #fff;
+    background-color: #2D2D2D;
+}
