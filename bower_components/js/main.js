@@ -459,7 +459,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             genPolyRoute($scope);
 
             // show check in message
-            var successCheckInMessage = "Checked In!" + "\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
+            var successCheckInMessage = "Checked In!" + "\nName: " + $scope.fbData.name +"\nBill ID : " + $scope.currentBillID + "\nLocation : " + 
             "(" + $scope.lat + " , " +  $scope.lng + ")";
 
             alert(successCheckInMessage);
