@@ -8,7 +8,10 @@ var app = angular.module('pageHolder', [
     .directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',
-        link: function (scope, element, attr) {
+        link: function (scope, element, attrs) {
+          // alert(JSON.stringify($scope[0]));
+          // alert(scope.$index);
+
             if (scope.$last === true) {
                 $timeout(function () {
                     scope.$emit('ngRepeatFinished');
@@ -93,6 +96,7 @@ app.service('sharedVariables', function () {
     var property = '';
     var fbData ='';
     var currentBill;
+    var bills = [];
 
         return {
             getProperty: function () {
@@ -112,7 +116,16 @@ app.service('sharedVariables', function () {
             },
             setFbData: function(value){
                 fbData = value;
+            },
+
+            getBills: function (){
+                return bills;
+            },
+            setBills: function(value){
+                bills = value;
             }
+
+
 
 
         };
@@ -267,6 +280,8 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     // textbox
     $scope.list = [];
     $scope.text;
+
+    $scope.bills = ["empty"];
 
 
 
@@ -544,11 +559,11 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   };
     
   // Loading spinner
-    $scope.startSpin = function() {
-    if (!$scope.spinneractive) {
-      usSpinnerService.spin('spinner-1');
-    }
-  };
+  //   $scope.startSpin = function() {
+  //   if (!$scope.spinneractive) {
+  //     usSpinnerService.spin('spinner-1');
+  //   }
+  // };
 
   $scope.stopSpin = function() {
     if ($scope.spinneractive) {
@@ -563,7 +578,10 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   //Define some listeners
 
   $rootScope.$on('us-spinner:spin', function(event, key) {
-    $scope.spinneractive = true;
+    // if ($scope.bills.length){
+      // alert('here');
+    //   $scope.spinneractive = true;
+    // }
   });
 
   $rootScope.$on('us-spinner:stop', function(event, key) {
@@ -571,6 +589,9 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   });
 
   $rootScope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    // if (!$scope.bills){
+    //   $scope.alertMessage = "No bills found...";
+    // }
     $scope.stopSpin();
   });
 
