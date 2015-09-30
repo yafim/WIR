@@ -796,3 +796,7 @@ header {
 .navbar-nav {
     margin: 0px 0px;
 }
+.navbar-c:hover{
+    color: #fff;
+    background-color: #2D2D2D;
+}
