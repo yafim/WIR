@@ -343,7 +343,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     //Useful variables
     var marker;
     var places;
-
+    var i = 0;
 
     places = $scope.places; 
 
@@ -354,14 +354,19 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
             position: new google.maps.LatLng(places[place].lat, places[place].lng)
           });
 
-      
+          if (i == places.length-1){
+          marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+          }
+
       // Add marker to list
       $scope.myMarkers.push(marker);
 
       // Add current location - for the Poly route...
       $scope.polyLineCoordinates.push(marker.position);
+      i++;
     }
-
+// alert(i == places.length);
   }
 
   // Generate geo marker
