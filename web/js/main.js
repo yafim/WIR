@@ -366,7 +366,6 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
       $scope.polyLineCoordinates.push(marker.position);
       i++;
     }
-// alert(i == places.length);
   }
 
   // Generate geo marker
@@ -493,7 +492,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
 
             $scope.removeMarkers(); // clear map
             
-            genGeoMarker($scope); // create marker with current location
+            // genGeoMarker($scope); // create marker with current location
 
             showAllMarkers($scope); // show all other markers
 
