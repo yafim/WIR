@@ -11,13 +11,13 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', '.html');
 
 
-app.set('views', path.join(__dirname, 'web/views'));
+app.set('views', path.join(__dirname, 'bower_components/views'));
 
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded()); // to support URL-encoded bodies
 
 // Use middleware
-app.use(express.static(path.join(__dirname, 'web'))); //use bootsrap
+app.use(express.static(path.join(__dirname, 'bower_components'))); //use bootsrap
 app.use(bodyParser());
 
 // Define routes

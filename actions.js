@@ -96,3 +96,6 @@ router.post('/map/checkIn', function(req, res){
 // Use as module
 module.exports = router;
 
+router.get('/web/main.html', function(req, res){
+	res.redirect('http://localhost:3000/')
+});

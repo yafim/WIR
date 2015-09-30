@@ -43,12 +43,9 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
     .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController", needAuth: true})
     .when("/myBills", {templateUrl: path + "myBills.html", controller: "MapController", needAuth: true})
-
-    // inner links
-    .when("/heroku", {templateUrl: path + "heroku.html", controller: "PageCtrl"})
-    .when("/partners", {templateUrl: path + "partners.html", controller: "PageCtrl"})
-    .when("/help", {templateUrl: path + "help.html", controller: "PageCtrl"})
-
+      .when("/partners", {templateUrl: path + "partners.html", controller: "PageCtrl"})
+      .when("/heroku", {templateUrl: path + "heroku.html", controller: "PageCtrl"})
+      .when("/help", {templateUrl: path + "help.html", controller: "PageCtrl"})
     .otherwise({templateUrl: path + "404.html", controller: "PageCtrl"});
 }]);
 

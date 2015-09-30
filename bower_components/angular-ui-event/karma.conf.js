@@ -29,7 +29,7 @@ module.exports = function(config) {
     reporters: ['progress'],
 
 
-    // web server port
+    // bower_components server port
     port: 9876,
 
 
