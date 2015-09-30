@@ -8,10 +8,7 @@ var app = angular.module('pageHolder', [
     .directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',
-        link: function (scope, element, attrs) {
-          // alert(JSON.stringify($scope[0]));
-          // alert(scope.$index);
-
+        link: function (scope, element, attr) {
             if (scope.$last === true) {
                 $timeout(function () {
                     scope.$emit('ngRepeatFinished');
@@ -21,45 +18,6 @@ var app = angular.module('pageHolder', [
     }
 });
 
-app.directive('draggable', function($document) {
-  return function(scope, element, attr) {
-    var startX = 0, startY = 0, x = 0, y = 0;
-    element.css({
-     position: 'relative',
-     // border: '1px solid red',
-     // backgroundColor: 'rgb(253, 59, 115)',
-     // cursor: 'pointer',
-     // display: 'block',
-     // // width: '65px',
-     // left:'780px',
-     // top: '-465px'
-
-
-    });
-    element.on('touchstart', function(event) {
-      // Prevent default dragging of selected content
-      event.preventDefault();
-      startX = event.screenX - x;
-      startY = event.screenY - y;
-      $document.on('mousemove', mousemove);
-      $document.on('mouseup', mouseup);
-    });
-
-    function mousemove(event) {
-      y = event.screenY - startY;
-      x = event.screenX - startX;
-      element.css({
-        top: y + 'px',
-        left:  x + 'px'
-      });
-    }
-
-    function mouseup() {
-      $document.off('mousemove', mousemove);
-      $document.off('mouseup', mouseup);
-    }
-  };
-});
 
 app.constant('facebookConfigSettings', {
     'appID' : '927002334009260',
@@ -85,6 +43,12 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/map", {templateUrl: path + "map.html", controller: "MapController"})
     .when("/checkIn", {templateUrl: path + "checkIn.html", controller: "MapController", needAuth: true})
     .when("/myBills", {templateUrl: path + "myBills.html", controller: "MapController", needAuth: true})
+
+    // inner links
+    .when("/heroku", {templateUrl: path + "heroku.html", controller: "PageCtrl"})
+    .when("/partners", {templateUrl: path + "partners.html", controller: "PageCtrl"})
+    .when("/help", {templateUrl: path + "help.html", controller: "PageCtrl"})
+
     .otherwise({templateUrl: path + "404.html", controller: "PageCtrl"});
 }]);
 
@@ -210,12 +174,6 @@ app.controller('PageCtrl', function ($scope, $location, $http, $rootScope, share
 
 /* Navigation bar controller */
 app.controller('NavCtrl', function ($scope, $location,sharedVariables) {
-    // $scope.fakeDB = data.fakeDB;
-    // $scope.index = data.indexToPass;
-
-
-    //Search box toggle
-    // $scope.custom = true;
 
     //nav bar toggle
     $scope.isCollapsed = true;
@@ -281,7 +239,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
     $scope.list = [];
     $scope.text;
 
-    $scope.bills = ["empty"];
+    $scope.bills = [];
 
 
 

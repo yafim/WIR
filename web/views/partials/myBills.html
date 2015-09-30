@@ -12,37 +12,17 @@
                     <ng-init="startSpin()" us-spinner="{radius:27, lines:11 ,width:15, length: 0, scale:.75, speed: 0.9, trail: 62}" />
         </div>
 
-        <!-- select bar for bill id-->
-        <!-- <div class="col-sm-8"> -->
+            <!-- select bar for bill id-->
             <h2>Hi <b>{{fbData.first_name}} </b>! <br>Click to see your bills </h2>
-            <!-- FaceBook id : {{fbId}}
-            Facebook name :  -->
-<!-- <div ng-if="bills.length"> -->
+
+
             <select ng-model="selectBill" ng-change="showMarkerById(bills)">
                 <option value="" >---Select your bill ID---</option>
 
-                <!-- <div >  -->
-                
-                <!-- <option value="" ng-if="!bills.length" >-No bills-</option> -->
-
-<!-- on-finish-render="ngRepeatFinished" -->
-                <div ng-if="bills.length">
                     <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished"> {{bill.billID}}
-                    </option>
-                </div>
 
-      <!--           <div ng-if="!bills.length">
-                    <option ng-init="spinneractive=false">-Empty-</option>
-                </div>
- -->
+
             </select>
-<!-- </div> -->
-
-<!-- <div ng-if="!bills.length"><ng-init="stopSpin()"> Nothing found...</div> -->
-            <!-- {{alertMessage}} -->
-
-
-
     
         <div class="row">
           <div id="map" ui-map="model.map" class="map" ui-options="mapOptions">
