@@ -781,7 +781,7 @@ header {
 }
 
 .dropdown-menu{
-        background-color: #363636;
+    background-color: #363636;
     /*text-align: center;*/
 }
    .dropdown-menu li>a{color:white; }
@@ -791,4 +791,8 @@ header {
    .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
     color: #fff;
     background-color: #2D2D2D;
+}
+
+.navbar-nav {
+    margin: 0px 0px;
 }
