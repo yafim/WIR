@@ -17,11 +17,8 @@
 
 
             <select ng-model="selectBill" ng-change="showMarkerById(bills)">
-                <option value="" >---Select your bill ID---</option>
-
-                    <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished"> {{bill.billID}}
-
-
+                <option value="">---Select your bill ID---</option>
+                    <option ng-repeat="bill in bills" on-finish-render="ngRepeatFinished">{{bill.billID}}</option>
             </select>
     
         <div class="row">

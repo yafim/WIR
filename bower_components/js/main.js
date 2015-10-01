@@ -535,7 +535,7 @@ app.controller('MapController', function ($scope, $timeout, $log, $http, $route,
   $rootScope.$on('us-spinner:spin', function(event, key) {
     // if ($scope.bills.length){
       // alert('here');
-    //   $scope.spinneractive = true;
+      $scope.spinneractive = true;
     // }
   });
 

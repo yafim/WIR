@@ -1,87 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9eaadf8-bd20-42cc-987b-b61815a3ac18" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WhereIsRachel.apk" afterPath="$PROJECT_DIR$/bower_components/WhereIsRachel.apk" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/.bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/README.md" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/channel.html" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/channel.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/demo/demoApp.js" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/demo/demoApp.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/demo/partials/main.html" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/demo/partials/main.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/demo/partials/private.html" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/demo/partials/private.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/index.html" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/package.json" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/src/facebookUtils.js" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/src/facebookUtils.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-facebook-utils/src/facebookUtils.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-facebook-utils/src/facebookUtils.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-loading-bar/angular-spinner.js" afterPath="$PROJECT_DIR$/bower_components/angular-loading-bar/angular-spinner.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/.bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/.gitignore" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/.gitignore" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/.jshintrc" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/.jshintrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/.travis.yml" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/.travis.yml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/CHANGELOG.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/CHANGELOG.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/LICENSE" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/LICENSE" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/README.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/demo/index.html" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/demo/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/dist/event.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/dist/event.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/dist/event.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/dist/event.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/gulpfile.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/gulpfile.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/karma.conf.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/karma.conf.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/package.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/src/event.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/src/event.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-event/test/eventSpec.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/test/eventSpec.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-map/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-map/.bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-map/.travis.yml" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/.travis.yml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-map/CHANGELOG.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-map/CHANGELOG.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-map/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-map/bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-map/ui-map.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-map/ui-map.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-map/ui-map.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-map/ui-map.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/.bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/.travis.yml" afterPath="$PROJECT_DIR$/bower_components/angular-ui-map/.travis.yml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/CHANGELOG.md" afterPath="$PROJECT_DIR$/bower_components/angular-ui-event/CHANGELOG.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/ui-utils-ieshiv.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/ui-utils-ieshiv.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/ui-utils-ieshiv.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/ui-utils-ieshiv.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/ui-utils.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/ui-utils.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/angular-ui-utils/ui-utils.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-ui-utils/ui-utils.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/css/button.css" afterPath="$PROJECT_DIR$/bower_components/css/button.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/css/main.css" afterPath="$PROJECT_DIR$/bower_components/css/main.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/js/lib/angular-google-maps.min.js" afterPath="$PROJECT_DIR$/bower_components/js/lib/angular-google-maps.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/js/lib/angular.min.js" afterPath="$PROJECT_DIR$/bower_components/js/lib/angular.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/js/lib/lodash.js" afterPath="$PROJECT_DIR$/bower_components/js/lib/lodash.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/js/lib/lodash.underscore.min.js" afterPath="$PROJECT_DIR$/bower_components/js/lib/lodash.underscore.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/js/main - Copy.js" afterPath="$PROJECT_DIR$/bower_components/js/main - Copy.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/js/main.js" afterPath="$PROJECT_DIR$/bower_components/js/main.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/bg.jpg" afterPath="$PROJECT_DIR$/bower_components/views/images/bg.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/food.png" afterPath="$PROJECT_DIR$/bower_components/views/images/food.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/logo.png" afterPath="$PROJECT_DIR$/bower_components/views/images/logo.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/logo2.png" afterPath="$PROJECT_DIR$/bower_components/views/images/logo2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/nofar.jpg" afterPath="$PROJECT_DIR$/bower_components/views/images/nofar.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/omri1.jpg" afterPath="$PROJECT_DIR$/bower_components/views/images/omri1.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/rachel.jpg" afterPath="$PROJECT_DIR$/bower_components/views/images/rachel.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/images/yafim.jpg" afterPath="$PROJECT_DIR$/bower_components/views/images/yafim.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/index.html" afterPath="$PROJECT_DIR$/bower_components/views/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/404.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/404.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/about.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/about.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/blog.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/blog.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/blog_item.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/blog_item.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/checkIn.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/checkIn.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/contact.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/contact.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/faq.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/faq.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/help.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/help.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/heroku.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/heroku.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/main.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/main.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/map.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/map.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/myBills.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/myBills.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/partners.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/partners.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/partials/profile.html" afterPath="$PROJECT_DIR$/bower_components/views/partials/profile.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/templates/footer.html" afterPath="$PROJECT_DIR$/bower_components/views/templates/footer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/views/templates/header.html" afterPath="$PROJECT_DIR$/bower_components/views/templates/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actions.js" afterPath="$PROJECT_DIR$/actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="d9eaadf8-bd20-42cc-987b-b61815a3ac18" name="Default" comment="" />
     <list id="67f46385-5976-4d32-a176-4e745eca3ccd" name="facebook login" comment="" />
     <ignored path="wir.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -125,7 +45,7 @@
       <file leaf-file-name="actions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3050847">
+            <state vertical-scroll-proportion="3.6771846">
               <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding />
             </state>
@@ -250,7 +170,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yafim/whereisrachel" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="recentsLimit" value="5" />
@@ -372,7 +292,13 @@
       <option name="project" value="LOCAL" />
       <updated>1443459259463</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="new commit">
+      <created>1443640880662</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1443640880662</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -386,8 +312,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -395,14 +322,13 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32824427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -426,7 +352,8 @@
     <MESSAGE value="moved to the end&#10;" />
     <MESSAGE value="Added help.html and edited content on checkIn.html" />
     <MESSAGE value="Added link to FB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added link to FB" />
+    <MESSAGE value="new commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="new commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -451,7 +378,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3050847">
+        <state vertical-scroll-proportion="3.6771846">
           <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding />
         </state>
