@@ -1,13 +1,13 @@
-﻿1. נכנסים ל checkIn כאשר העברנו כבר את השטרות הרלוונטיים למשתמש (לפי FB).
-2. חיפוש ב navbar - 
-2.1 הזנת billID רלוונטי
-2.2 שליחה לserver (מתודה POST) - actions.js
-2.3 חיפוש ב actions.js בתוך ה fakeDB עבור אותו שטר
-2.3.1 אם השטר נמצא - חוזרת תשובה לclient עם currentBill שיכיל Places ו billID
-אם השטר לא נמצא - הודעה שגיאה.
+﻿Here's how you should use our application:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+On the main page you should sign in with your facebook account. Make sure to enable location sharing!
 
-2.4 טעינת מפה כאשר fakeDB בעצם יהיה אוסף השטרות שנרצה להציג.
+After signing in you can press on "Enter new bill" and choose a 10 digits bill ID to check in with.
 
+After checking in with your bill you can see your check in on the map.
 
-אימונים שדוד היה
-5,12/9
+On the left corner you can see a navigation bar. You can see your profile and the your bills' routes, contact us, read about us and browse our FAQ page.
+
+We really had fun and learned a lot. We hope you will enjoy our app and see how much time and effort we've put into it :) Don't forget to like our Facebook page.
+
+If you are not logged in you can't check. The app is social and requires a Facebook login.
